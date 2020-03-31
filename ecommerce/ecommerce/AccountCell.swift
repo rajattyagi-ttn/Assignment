@@ -19,14 +19,6 @@ class AccountCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-//        countryPicker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50)
-//        countryPicker.isHidden = true
-        
-        
-//        countryPicker.delegate = self
-//        countryPicker.dataSource = self
-//        additionalTextfield.inputView = countryPicker
        
     }
 
