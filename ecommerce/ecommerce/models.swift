@@ -46,14 +46,14 @@ import UIKit
             listOfCountry.append(name)
             
         }
-        
         for i in 0..<listOfCountry.count {
             let countryObj = CountryList(countryName: "\(listOfCountry[i])")
             countryItemArray.append(countryObj)
         }
-        
         return countryItemArray
     }
+    
+    
     // Computed property for country codes
     public static var countryCodes : [String] {
         var listOfCodes : [String] = []
@@ -67,6 +67,7 @@ import UIKit
 
 
 struct LanguageList {
+    
     var languageName : String
     
     public static var languageItem : [LanguageList] {
@@ -78,12 +79,10 @@ struct LanguageList {
            let name = NSLocale(localeIdentifier: "en_US").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "\(code)"
            listOfLanguages.append(name)
        }
-        
         for i in 0..<listOfLanguages.count {
            let languageObj = LanguageList(languageName: "\(listOfLanguages[i])")
            languageItemArray.append(languageObj)
        }
-       
        return languageItemArray
     }
     

@@ -12,8 +12,6 @@ class AccountCell: UITableViewCell {
 
     @IBOutlet weak var menuItemImageView: UIImageView!
     @IBOutlet weak var menuItemLabel: UILabel!
-    @IBOutlet weak var additionalInfoLabel: UILabel!
-
     @IBOutlet weak var additionalLabel: UILabel!
     
     

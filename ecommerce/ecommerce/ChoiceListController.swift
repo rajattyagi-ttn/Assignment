@@ -29,6 +29,8 @@ extension ChoiceListController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //Configuring cell based on where user came from (Country or Language)
+        
         if AccountController.choice == "country" {
             let cell = choiceListTableView.dequeueReusableCell(withIdentifier: "choicecell", for: indexPath) as! ChoiceCell
             let flagCodeString = CountryList.countryCodes[indexPath.row]
@@ -60,7 +62,7 @@ extension ChoiceListController : UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    // This Function converts country code into it's flag emoji
+    // This Function converts country code into it's respective flag emoji
     
     func countryCodeToFlag(from country:String) -> String {
         let base : UInt32 = 127397
