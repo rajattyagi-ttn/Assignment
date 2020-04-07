@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044318512437FF85003A5E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044318502437FF84003A5E83 /* Assets.xcassets */; };
 		04A551BD242CAD3F00E848E2 /* ChoiceListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A551BC242CAD3F00E848E2 /* ChoiceListController.swift */; };
 		04A551C0242CADCF00E848E2 /* ChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A551BE242CADCF00E848E2 /* ChoiceCell.swift */; };
 		04A551C22433699A00E848E2 /* ChoiceCell.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04A551BE242CADCF00E848E2 /* ChoiceCell.swift */; };
@@ -14,7 +15,6 @@
 		04B026842424B1F7003D4C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B026832424B1F7003D4C69 /* AppDelegate.swift */; };
 		04B026862424B1F7003D4C69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B026852424B1F7003D4C69 /* SceneDelegate.swift */; };
 		04B0268D2424B1F7003D4C69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B0268B2424B1F7003D4C69 /* Main.storyboard */; };
-		04B0268F2424B1FA003D4C69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B0268E2424B1FA003D4C69 /* Assets.xcassets */; };
 		04B026922424B1FA003D4C69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B026902424B1FA003D4C69 /* LaunchScreen.storyboard */; };
 		04B0269D2424B1FA003D4C69 /* ecommerceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0269C2424B1FA003D4C69 /* ecommerceTests.swift */; };
 		04B026A82424B1FA003D4C69 /* ecommerceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B026A72424B1FA003D4C69 /* ecommerceUITests.swift */; };
@@ -43,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		044318502437FF84003A5E83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04A551BC242CAD3F00E848E2 /* ChoiceListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceListController.swift; sourceTree = "<group>"; };
 		04A551BE242CADCF00E848E2 /* ChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCell.swift; sourceTree = "<group>"; };
 		04A551BF242CADCF00E848E2 /* ChoiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoiceCell.xib; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		04B026832424B1F7003D4C69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04B026852424B1F7003D4C69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04B0268C2424B1F7003D4C69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		04B0268E2424B1FA003D4C69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04B026912424B1FA003D4C69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04B026932424B1FA003D4C69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04B026982424B1FA003D4C69 /* ecommerceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ecommerceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +123,7 @@
 				04A551BC242CAD3F00E848E2 /* ChoiceListController.swift */,
 				04A551BE242CADCF00E848E2 /* ChoiceCell.swift */,
 				04A551BF242CADCF00E848E2 /* ChoiceCell.xib */,
-				04B0268E2424B1FA003D4C69 /* Assets.xcassets */,
+				044318502437FF84003A5E83 /* Assets.xcassets */,
 				04B026902424B1FA003D4C69 /* LaunchScreen.storyboard */,
 				04B026932424B1FA003D4C69 /* Info.plist */,
 			);
@@ -256,7 +256,7 @@
 				04A551C22433699A00E848E2 /* ChoiceCell.swift in Resources */,
 				04B026C02424F7C9003D4C69 /* AccountCell.xib in Resources */,
 				04B026922424B1FA003D4C69 /* LaunchScreen.storyboard in Resources */,
-				04B0268F2424B1FA003D4C69 /* Assets.xcassets in Resources */,
+				044318512437FF85003A5E83 /* Assets.xcassets in Resources */,
 				04B0268D2424B1F7003D4C69 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

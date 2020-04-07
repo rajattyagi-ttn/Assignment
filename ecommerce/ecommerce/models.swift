@@ -19,7 +19,7 @@ import UIKit
         [AccountMenu(rowIcon: #imageLiteral(resourceName: "location"), rowName: "Track Order"),
         AccountMenu(rowIcon: #imageLiteral(resourceName: "sizeChart"), rowName: "Size Chart"),
         AccountMenu(rowIcon: UIImage(systemName: "bell")!, rowName: "Notifications"),
-        AccountMenu(rowIcon: #imageLiteral(resourceName: "locator"), rowName: "Store Locator"),],
+        AccountMenu(rowIcon: #imageLiteral(resourceName: "cross"), rowName: "Store Locator"),],
         [AccountMenu(rowIcon: #imageLiteral(resourceName: "globe"), rowName: "Country",country: "AED"),
         AccountMenu(rowIcon: #imageLiteral(resourceName: "language"), rowName: "Language", language: "ENG"),
         AccountMenu(rowIcon: UIImage(systemName: "person")!, rowName: "About Us"),
@@ -44,7 +44,6 @@ import UIKit
             let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
             let name = NSLocale(localeIdentifier: "en_US").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Country not found for code: \(code)"
             listOfCountry.append(name)
-            
         }
         for i in 0..<listOfCountry.count {
             let countryObj = CountryList(countryName: "\(listOfCountry[i])")
@@ -52,7 +51,6 @@ import UIKit
         }
         return countryItemArray
     }
-    
     
     // Computed property for country codes
     public static var countryCodes : [String] {

@@ -151,7 +151,7 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource{
             
             AccountController.choice = "country"
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "CountryListController")
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChoiceListController")
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
@@ -160,7 +160,7 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource{
             
             AccountController.choice = "language"
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "CountryListController")
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChoiceListController")
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
