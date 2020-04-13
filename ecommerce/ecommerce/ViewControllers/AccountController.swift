@@ -15,7 +15,8 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImageView: UIImageView!
     
-    public static var recievedCountry : String?
+    public static var recievedCountryCode : String?
+    public static var recievedFlagImage : UIImage?
     public static var recievedLanguage : String?
     let imagePicker = UIImagePickerController()
     let headerTitles = [" "," "]
@@ -50,16 +51,31 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
         
         
         
-        if let selectedCountry = AccountController.recievedCountry {
+        if let selectedCountry = AccountController.recievedCountryCode {
              let countryIndexPath = IndexPath(row: countryIndex, section: 1)
-            let countryCell = tableView.cellForRow(at: countryIndexPath) as! AccountCell
-            countryCell.additionalLabel.text = selectedCountry
+            let countryCell = tableView.cellForRow(at: countryIndexPath) as! CountryCell
+            countryCell.countryNameLabel.text = selectedCountry
+            if let url = URL(string: "https://www.countryflags.io/\(selectedCountry)/shiny/64.png") {
+                URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    if let data = data {
+                        DispatchQueue.main.async {
+                            
+                            //here i pass image to cell.FlagImage
+                            
+                            countryCell.setCountryFlagImageView(image: UIImage(data: data) ?? self.defaultCountryFlagImage)
+                            countryCell.countryFlagImageView.contentMode = .scaleAspectFill
+
+                        }
+                    }
+                }.resume()
+                
+            }
         }
         
         if let selectedLanguage = AccountController.recievedLanguage {
             let languageIndexPath = IndexPath(row: languageIndex, section: 1)
-            let languageCell = tableView.cellForRow(at: languageIndexPath) as! AccountCell
-            languageCell.additionalLabel.text = selectedLanguage.uppercased()
+            let languageCell = tableView.cellForRow(at: languageIndexPath) as! LanguageCell
+            languageCell.languageNameLabel.text = selectedLanguage.uppercased()
         
         }
         

@@ -102,6 +102,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0450445A2444A3F60006F374 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				04B026B92424C366003D4C69 /* AccountController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0450445B2444A4310006F374 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				04B026BB2424C3D8003D4C69 /* AccountCell.swift */,
+				04B026BC2424C3D8003D4C69 /* AccountCell.xib */,
+				0450444E24448DEB0006F374 /* CountryCell.swift */,
+				0450444F24448DEB0006F374 /* CountryCell.xib */,
+				0450445224448DFC0006F374 /* LanguageCell.swift */,
+				0450445324448DFC0006F374 /* LanguageCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		0450445C2444A4860006F374 /* Country And Language */ = {
+			isa = PBXGroup;
+			children = (
+				04A551BC242CAD3F00E848E2 /* ChoiceListController.swift */,
+				0450445624449AB90006F374 /* CountryListCell.swift */,
+				0450445724449AB90006F374 /* CountryListCell.xib */,
+				04A551BE242CADCF00E848E2 /* ChoiceCell.swift */,
+				04A551BF242CADCF00E848E2 /* ChoiceCell.xib */,
+			);
+			path = "Country And Language";
+			sourceTree = "<group>";
+		};
 		04B026772424B1F7003D4C69 = {
 			isa = PBXGroup;
 			children = (
@@ -129,18 +162,9 @@
 				04B026852424B1F7003D4C69 /* SceneDelegate.swift */,
 				04B0268B2424B1F7003D4C69 /* Main.storyboard */,
 				04B026C12424F970003D4C69 /* models.swift */,
-				04B026B92424C366003D4C69 /* AccountController.swift */,
-				0450444E24448DEB0006F374 /* CountryCell.swift */,
-				0450444F24448DEB0006F374 /* CountryCell.xib */,
-				0450445224448DFC0006F374 /* LanguageCell.swift */,
-				0450445324448DFC0006F374 /* LanguageCell.xib */,
-				04B026BB2424C3D8003D4C69 /* AccountCell.swift */,
-				04B026BC2424C3D8003D4C69 /* AccountCell.xib */,
-				04A551BC242CAD3F00E848E2 /* ChoiceListController.swift */,
-				0450445624449AB90006F374 /* CountryListCell.swift */,
-				0450445724449AB90006F374 /* CountryListCell.xib */,
-				04A551BE242CADCF00E848E2 /* ChoiceCell.swift */,
-				04A551BF242CADCF00E848E2 /* ChoiceCell.xib */,
+				0450445A2444A3F60006F374 /* ViewControllers */,
+				0450445B2444A4310006F374 /* TableViewCell */,
+				0450445C2444A4860006F374 /* Country And Language */,
 				044318502437FF84003A5E83 /* Assets.xcassets */,
 				04B026902424B1FA003D4C69 /* LaunchScreen.storyboard */,
 				04B026932424B1FA003D4C69 /* Info.plist */,

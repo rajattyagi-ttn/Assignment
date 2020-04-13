@@ -95,16 +95,19 @@ extension ChoiceListController : UITableViewDelegate, UITableViewDataSource {
         
         if AccountController.choice == .country {
             let countryCodeString = CountryList.countryCodes[indexPath.row]
-            let flagString = countryCodeToFlag(from: countryCodeString)
-            AccountController.recievedCountry = flagString
-            AccountController.recievedCountry! += " \(countryCodeString)"
+            AccountController.recievedCountryCode = countryCodeString
         }
+            
         else{
             let languageCodeString = LanguageList.languageCodes[indexPath.row]
             AccountController.recievedLanguage = languageCodeString
         }
 
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
     }
 
     
