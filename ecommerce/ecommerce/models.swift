@@ -37,6 +37,7 @@ import UIKit
     var countryName : String
     
     // Computed property for country List Array
+    
     public static var countryItems: [CountryList] {
         var listOfCountry : [String] = []
         var countryItemArray : [CountryList] = []
@@ -93,3 +94,8 @@ struct LanguageList {
     }
 }
 
+enum CellMode {
+    case country
+    case language
+    case none
+}

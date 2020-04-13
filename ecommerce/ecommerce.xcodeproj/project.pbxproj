@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		044318512437FF85003A5E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044318502437FF84003A5E83 /* Assets.xcassets */; };
+		0450445024448DEB0006F374 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450444E24448DEB0006F374 /* CountryCell.swift */; };
+		0450445124448DEB0006F374 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0450444F24448DEB0006F374 /* CountryCell.xib */; };
+		0450445424448DFC0006F374 /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450445224448DFC0006F374 /* LanguageCell.swift */; };
+		0450445524448DFC0006F374 /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0450445324448DFC0006F374 /* LanguageCell.xib */; };
+		0450445824449AB90006F374 /* CountryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450445624449AB90006F374 /* CountryListCell.swift */; };
+		0450445924449AB90006F374 /* CountryListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0450445724449AB90006F374 /* CountryListCell.xib */; };
 		04A551BD242CAD3F00E848E2 /* ChoiceListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A551BC242CAD3F00E848E2 /* ChoiceListController.swift */; };
 		04A551C0242CADCF00E848E2 /* ChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A551BE242CADCF00E848E2 /* ChoiceCell.swift */; };
 		04A551C22433699A00E848E2 /* ChoiceCell.swift in Resources */ = {isa = PBXBuildFile; fileRef = 04A551BE242CADCF00E848E2 /* ChoiceCell.swift */; };
@@ -44,6 +50,12 @@
 
 /* Begin PBXFileReference section */
 		044318502437FF84003A5E83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0450444E24448DEB0006F374 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
+		0450444F24448DEB0006F374 /* CountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
+		0450445224448DFC0006F374 /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
+		0450445324448DFC0006F374 /* LanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageCell.xib; sourceTree = "<group>"; };
+		0450445624449AB90006F374 /* CountryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListCell.swift; sourceTree = "<group>"; };
+		0450445724449AB90006F374 /* CountryListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryListCell.xib; sourceTree = "<group>"; };
 		04A551BC242CAD3F00E848E2 /* ChoiceListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceListController.swift; sourceTree = "<group>"; };
 		04A551BE242CADCF00E848E2 /* ChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCell.swift; sourceTree = "<group>"; };
 		04A551BF242CADCF00E848E2 /* ChoiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoiceCell.xib; sourceTree = "<group>"; };
@@ -118,9 +130,15 @@
 				04B0268B2424B1F7003D4C69 /* Main.storyboard */,
 				04B026C12424F970003D4C69 /* models.swift */,
 				04B026B92424C366003D4C69 /* AccountController.swift */,
+				0450444E24448DEB0006F374 /* CountryCell.swift */,
+				0450444F24448DEB0006F374 /* CountryCell.xib */,
+				0450445224448DFC0006F374 /* LanguageCell.swift */,
+				0450445324448DFC0006F374 /* LanguageCell.xib */,
 				04B026BB2424C3D8003D4C69 /* AccountCell.swift */,
 				04B026BC2424C3D8003D4C69 /* AccountCell.xib */,
 				04A551BC242CAD3F00E848E2 /* ChoiceListController.swift */,
+				0450445624449AB90006F374 /* CountryListCell.swift */,
+				0450445724449AB90006F374 /* CountryListCell.xib */,
 				04A551BE242CADCF00E848E2 /* ChoiceCell.swift */,
 				04A551BF242CADCF00E848E2 /* ChoiceCell.xib */,
 				044318502437FF84003A5E83 /* Assets.xcassets */,
@@ -253,11 +271,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				04A551C3243369A900E848E2 /* ChoiceCell.xib in Resources */,
+				0450445924449AB90006F374 /* CountryListCell.xib in Resources */,
 				04A551C22433699A00E848E2 /* ChoiceCell.swift in Resources */,
 				04B026C02424F7C9003D4C69 /* AccountCell.xib in Resources */,
 				04B026922424B1FA003D4C69 /* LaunchScreen.storyboard in Resources */,
 				044318512437FF85003A5E83 /* Assets.xcassets in Resources */,
+				0450445524448DFC0006F374 /* LanguageCell.xib in Resources */,
 				04B0268D2424B1F7003D4C69 /* Main.storyboard in Resources */,
+				0450445124448DEB0006F374 /* CountryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,10 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0450445424448DFC0006F374 /* LanguageCell.swift in Sources */,
+				0450445024448DEB0006F374 /* CountryCell.swift in Sources */,
 				04B026BA2424C366003D4C69 /* AccountController.swift in Sources */,
 				04B026C22424F970003D4C69 /* models.swift in Sources */,
 				04B026BF2424C3E3003D4C69 /* AccountCell.swift in Sources */,
 				04A551C0242CADCF00E848E2 /* ChoiceCell.swift in Sources */,
+				0450445824449AB90006F374 /* CountryListCell.swift in Sources */,
 				04B026842424B1F7003D4C69 /* AppDelegate.swift in Sources */,
 				04A551BD242CAD3F00E848E2 /* ChoiceListController.swift in Sources */,
 				04B026862424B1F7003D4C69 /* SceneDelegate.swift in Sources */,
