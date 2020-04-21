@@ -8,16 +8,13 @@
 
 import UIKit
 
-var cntry : String!
 
 class AccountController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImageView: UIImageView!
     
-    public static var recievedCountryCode : String?
-    public static var recievedFlagImage : UIImage?
-    public static var recievedLanguage : String?
+    
     let imagePicker = UIImagePickerController()
     let headerTitles = [" "," "]
     let countryIndex = 0
@@ -25,6 +22,8 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
     let defaultCountryCode = "in"
     let defaultCountryFlagImage = #imageLiteral(resourceName: "globe")
     let defaultLanguageName = "HINDI"
+    var recievedCountryCode : String?
+    var recievedLanguage : String?
     
     public static var choice = CellMode.none
         
@@ -50,34 +49,8 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
         super.viewDidAppear(animated)
         
         
+        updateCountryAndLanguageCell()
         
-        if let selectedCountry = AccountController.recievedCountryCode {
-             let countryIndexPath = IndexPath(row: countryIndex, section: 1)
-            let countryCell = tableView.cellForRow(at: countryIndexPath) as! CountryCell
-            countryCell.countryNameLabel.text = selectedCountry
-            if let url = URL(string: "https://www.countryflags.io/\(selectedCountry)/shiny/64.png") {
-                URLSession.shared.dataTask(with: url) { (data, response, error) in
-                    if let data = data {
-                        DispatchQueue.main.async {
-                            
-                            //here i pass image to cell.FlagImage
-                            
-                            countryCell.setCountryFlagImageView(image: UIImage(data: data) ?? self.defaultCountryFlagImage)
-                            countryCell.countryFlagImageView.contentMode = .scaleAspectFill
-
-                        }
-                    }
-                }.resume()
-                
-            }
-        }
-        
-        if let selectedLanguage = AccountController.recievedLanguage {
-            let languageIndexPath = IndexPath(row: languageIndex, section: 1)
-            let languageCell = tableView.cellForRow(at: languageIndexPath) as! LanguageCell
-            languageCell.languageNameLabel.text = selectedLanguage.uppercased()
-        
-        }
         
     }
     
@@ -95,6 +68,33 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
 
     }
     
+    func updateCountryAndLanguageCell() {
+        if let selectedCountry = self.recievedCountryCode {
+             let countryIndexPath = IndexPath(row: countryIndex, section: 1)
+            let countryCell = tableView.cellForRow(at: countryIndexPath) as! CountryCell
+            countryCell.countryNameLabel.text = selectedCountry
+            if let url = URL(string: "https://www.countryflags.io/\(selectedCountry)/shiny/64.png") {
+                URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    if let data = data {
+                        DispatchQueue.main.async {
+                            
+                            countryCell.setCountryFlagImageView(image: UIImage(data: data) ?? self.defaultCountryFlagImage)
+                            countryCell.countryFlagImageView.contentMode = .scaleAspectFill
+
+                        }
+                    }
+                }.resume()
+                
+            }
+        }
+        
+        if let selectedLanguage = self.recievedLanguage {
+            let languageIndexPath = IndexPath(row: languageIndex, section: 1)
+            let languageCell = tableView.cellForRow(at: languageIndexPath) as! LanguageCell
+            languageCell.languageNameLabel.text = selectedLanguage.uppercased()
+        
+        }
+    }
     
     func configureImageView() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(selectProfilePicture))
@@ -148,8 +148,6 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
                 URLSession.shared.dataTask(with: url) { (data, response, error) in
                     if let data = data {
                         DispatchQueue.main.async {
-                            
-                            //here i pass image to cell.FlagImage
                             
                             cell.setCountryFlagImageView(image: UIImage(data: data) ?? self.defaultCountryFlagImage)
                             cell.countryFlagImageView.contentMode = .scaleAspectFill
@@ -215,7 +213,8 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
             
             AccountController.choice = .country
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ChoiceListController")
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChoiceListController") as! ChoiceListController
+            vc.countryDelegate = self
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
@@ -224,7 +223,8 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
             
             AccountController.choice = .language
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ChoiceListController")
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChoiceListController") as! ChoiceListController
+            vc.languageDelegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -246,6 +246,18 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
         }
+    }
+    
+    
+}
+
+extension AccountController: CountryProtocol, LanguageProtocol {
+    func getSelectedCountryCode(countryCode: String) {
+        self.recievedCountryCode = countryCode
+    }
+    
+    func getSelectedLanguage(languageName: String) {
+        self.recievedLanguage = languageName
     }
     
     

@@ -31,7 +31,6 @@ import UIKit
 }
 
 
-
  struct CountryList {
     
     var countryName : String

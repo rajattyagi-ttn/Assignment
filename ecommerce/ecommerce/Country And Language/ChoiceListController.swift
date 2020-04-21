@@ -8,11 +8,23 @@
 
 import UIKit
 
+public protocol LanguageProtocol {
+    
+    func getSelectedLanguage(languageName: String)
+}
+
+public protocol CountryProtocol {
+    
+    func getSelectedCountryCode(countryCode: String)
+}
+
 class ChoiceListController: UIViewController {
 
     @IBOutlet weak var choiceListTableView: UITableView!
     
     let defaultCountryFlagImage = #imageLiteral(resourceName: "globe")
+    var languageDelegate: LanguageProtocol!
+    var countryDelegate: CountryProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +40,6 @@ class ChoiceListController: UIViewController {
 
 extension ChoiceListController : UITableViewDelegate, UITableViewDataSource {
     
-    
-    // This Function converts country code into it's respective flag emoji
-    
-    func countryCodeToFlag(from country:String) -> String {
-        let base : UInt32 = 127397
-        var s = ""
-        for v in country.uppercased().unicodeScalars {
-            s.unicodeScalars.append(UnicodeScalar(base + v.value)!)
-        }
-        return s
-        
-        
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -70,11 +69,8 @@ extension ChoiceListController : UITableViewDelegate, UITableViewDataSource {
                     if let data = data {
                         DispatchQueue.main.async {
                             
-                            //here i pass image to cell.FlagImage
-                            
                             cell.setCountryFlagImageView(image: UIImage(data: data) ?? self.defaultCountryFlagImage)
                             cell.countryFlagImageView.contentMode = .scaleAspectFill
-
                         }
                     }
                 }.resume()
@@ -95,12 +91,14 @@ extension ChoiceListController : UITableViewDelegate, UITableViewDataSource {
         
         if AccountController.choice == .country {
             let countryCodeString = CountryList.countryCodes[indexPath.row]
-            AccountController.recievedCountryCode = countryCodeString
+            countryDelegate.getSelectedCountryCode(countryCode: countryCodeString)
+
         }
             
         else{
             let languageCodeString = LanguageList.languageCodes[indexPath.row]
-            AccountController.recievedLanguage = languageCodeString
+            languageDelegate.getSelectedLanguage(languageName: languageCodeString)
+
         }
 
         self.navigationController?.popViewController(animated: true)
