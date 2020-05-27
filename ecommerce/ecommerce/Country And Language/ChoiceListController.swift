@@ -99,6 +99,7 @@ extension ChoiceListController : UITableViewDelegate, UITableViewDataSource {
             let languageCodeString = LanguageList.languageCodes[indexPath.row]
             languageDelegate.getSelectedLanguage(languageName: languageCodeString)
 
+            
         }
 
         self.navigationController?.popViewController(animated: true)

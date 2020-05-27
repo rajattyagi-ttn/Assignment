@@ -93,6 +93,66 @@ struct LanguageList {
     }
 }
 
+
+class ShowsBaseModel: Codable {
+    var page: Int?
+    var results: [ShowsResultModel]?
+    var totalPages: Int?
+    var totalResults: Int?
+    
+    private enum CodingKeys: String, CodingKey {
+        case page
+        case results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
+class ShowsResultModel: Codable {
+    var id: Int?
+    var name: String?
+    var title: String?
+    var overView: String?
+    var originalName: String?
+    var posterPath: String?
+    var voteAverage: Double?
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case title
+        case overView = "overview"
+        case originalName = "original_name"
+        case posterPath = "poster_path"
+        case voteAverage = "vote_average"
+    }
+}
+
+struct EmployeeBaseModel: Decodable {
+    var status: String
+    var data: [EmployeeResultModel]
+}
+
+
+struct EmployeeResultModel: Codable {
+    
+    let id: String
+    let employeeName: String
+    let employeeSalary: String
+    let employeeAge: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case employeeName = "employee_name"
+        case employeeSalary = "employee_salary"
+        case employeeAge = "employee_age"
+    }
+    
+}
+
+
+var movieGenre = [28:"Action", 12:"Adventure",16:"Animation",35:"Comedy",80:"Crime",99:"Documentary",18:"Drama",10751:"Family", 14:"Fantasy", 36:"History", 27:"Horror",10402:"Music"]
+
 enum CellMode {
     case country
     case language

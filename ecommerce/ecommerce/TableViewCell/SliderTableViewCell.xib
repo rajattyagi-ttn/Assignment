@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sliderTVCell" rowHeight="187" id="KGk-i7-Jjw" customClass="SliderTableViewCell" customModule="ecommerce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="401" height="187"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="401" height="187"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="20" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-ft-KXE">
+                        <rect key="frame" x="25" y="134" width="351" height="37"/>
+                        <color key="pageIndicatorTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </pageControl>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xgE-Ru-rqX">
+                        <rect key="frame" x="0.0" y="0.0" width="401" height="129"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fx0-9z-1uU">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="-1" id="oaD-2v-gzL"/>
+                            <outlet property="delegate" destination="-1" id="6yI-q1-GEW"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="xgE-Ru-rqX" secondAttribute="trailing" id="4KK-aQ-40x"/>
+                    <constraint firstItem="sZS-ft-KXE" firstAttribute="top" secondItem="xgE-Ru-rqX" secondAttribute="bottom" constant="5" id="FGm-Y2-uQY"/>
+                    <constraint firstItem="xgE-Ru-rqX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Nhy-O9-p4r"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="sZS-ft-KXE" secondAttribute="bottom" constant="5" id="TWA-r9-qAz"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="sZS-ft-KXE" secondAttribute="trailing" constant="5" id="Y1G-BS-k9G"/>
+                    <constraint firstItem="xgE-Ru-rqX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lft-8W-5Tb"/>
+                    <constraint firstItem="sZS-ft-KXE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="u9f-1M-Q9U"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="sliderCollectionView" destination="xgE-Ru-rqX" id="hwe-VZ-JJb"/>
+                <outlet property="sliderPageController" destination="sZS-ft-KXE" id="dlZ-Po-MnN"/>
+            </connections>
+            <point key="canvasLocation" x="190.57971014492756" y="134.26339285714286"/>
+        </tableViewCell>
+    </objects>
+</document>

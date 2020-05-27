@@ -19,6 +19,7 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
     let headerTitles = [" "," "]
     let countryIndex = 0
     let languageIndex = 1
+    let mapIndex = 3
     let defaultCountryCode = "in"
     let defaultCountryFlagImage = #imageLiteral(resourceName: "globe")
     let defaultLanguageName = "HINDI"
@@ -225,6 +226,13 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ChoiceListController") as! ChoiceListController
             vc.languageDelegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+            
+        else if indexPath.row == mapIndex && indexPath.section == 0 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+            
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
