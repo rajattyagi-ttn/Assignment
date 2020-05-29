@@ -108,7 +108,16 @@ class ShowsBaseModel: Codable {
     }
 }
 
-class ShowsResultModel: Codable {
+class ShowsResultModel: NSObject, Codable {
+    static func == (lhs: ShowsResultModel, rhs: ShowsResultModel) -> Bool {
+        if lhs.name == rhs.name {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
     var id: Int?
     var name: String?
     var title: String?
@@ -125,6 +134,54 @@ class ShowsResultModel: Codable {
         case originalName = "original_name"
         case posterPath = "poster_path"
         case voteAverage = "vote_average"
+    }
+}
+
+extension ShowsResultModel {
+    func persist(using key: String) {
+        do {
+            let encodedShow = try JSONEncoder().encode(self)
+            UserDefaults.standard.set(encodedShow, forKey: key)
+        } catch {
+            // in case of something wrong happened
+            print(error.localizedDescription)
+        }
+    }
+    
+    static func fetch(using key: String) -> ShowsResultModel? {
+        do {
+            guard let persistedShow = UserDefaults.standard.value(forKey: key) as? Data else { return nil }
+            let decodedShow = try JSONDecoder().decode(ShowsResultModel.self, from: persistedShow)
+            return decodedShow
+        } catch {
+            // in case of something wrong happened
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+}
+
+extension Array where Element == ShowsResultModel {
+    func persist(using key: String) {
+        do {
+            let encodedShow = try JSONEncoder().encode(self)
+            UserDefaults.standard.set(encodedShow, forKey: key)
+        } catch {
+            // in case of something wrong happened
+            print(error.localizedDescription)
+        }
+    }
+    
+    static func fetch(using key: String) -> [ShowsResultModel]? {
+        do {
+            guard let persistedShowes = UserDefaults.standard.value(forKey: key) as? Data else { return nil }
+            let decodedShowes = try JSONDecoder().decode([ShowsResultModel].self, from: persistedShowes)
+            return decodedShowes
+        } catch {
+            // in case of something wrong happened
+            print(error.localizedDescription)
+            return nil
+        }
     }
 }
 
@@ -150,6 +207,16 @@ struct EmployeeResultModel: Codable {
     
 }
 
+
+
+struct showDetailBaseModel: Codable {
+    let genres: [showDetailResultModel]
+}
+
+struct showDetailResultModel: Codable {
+    let id: String
+    let name: String
+}
 
 var movieGenre = [28:"Action", 12:"Adventure",16:"Animation",35:"Comedy",80:"Crime",99:"Documentary",18:"Drama",10751:"Family", 14:"Fantasy", 36:"History", 27:"Horror",10402:"Music"]
 

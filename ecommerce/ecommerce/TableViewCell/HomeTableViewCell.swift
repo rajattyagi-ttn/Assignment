@@ -38,7 +38,7 @@ class HomeTableViewCell: UITableViewCell {
         getShowsFrom(url: "https://api.themoviedb.org/3/discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10&api_key=820016b7116f872f5f27bf56f9fdfb66", index: 0)
         getShowsFrom(url: "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=820016b7116f872f5f27bf56f9fdfb66", index: 1)
         getShowsFrom(url: "https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=820016b7116f872f5f27bf56f9fdfb66", index: 2)
-        getShowsFrom(url: "https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=2019-09-15&primary_release_date.lte=2019-10-22&api_key=820016b7116f872f5f27bf56f9fdfb66", index: 3)
+        getShowsFrom(url: "https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=2018-09-15&primary_release_date.lte=2018-10-22&api_key=820016b7116f872f5f27bf56f9fdfb66", index: 3)
         
         
         collectionView.delegate = self
@@ -124,9 +124,10 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         array.remove(at: indexPath.row)
         let relatedArray = array
         
-        let imageUrl = baseImageUrl + selectedItem.posterPath!
+        let imageUrl = baseImageUrl + (selectedItem.posterPath ?? "/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg") 
         
         MovieDetailsController.recievedSelectedShow = selectedItem
+        MovieDetailsController.recievedShowId = selectedItem.id
         MovieDetailsController.recievedImageUrl = imageUrl
         MovieDetailsController.recievedRelatedShowsArray = relatedArray
 

@@ -117,11 +117,11 @@ extension SliderTableViewCell : UICollectionViewDelegate, UICollectionViewDataSo
         let imageUrl = baseImageUrl + selectedItem.posterPath!
         
         MovieDetailsController.recievedSelectedShow = selectedItem
+        MovieDetailsController.recievedShowId = selectedItem.id
         MovieDetailsController.recievedImageUrl = imageUrl
         MovieDetailsController.recievedRelatedShowsArray = relatedArray
         
         
-        print("Slider collectionview tapped")
         cellDelegate?.colCategorySelected(indexPath)
     }
     
