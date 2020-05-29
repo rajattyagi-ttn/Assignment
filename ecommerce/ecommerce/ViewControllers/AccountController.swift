@@ -57,14 +57,14 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
     
     @IBAction func signInTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SignInController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginController")
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
     
     @IBAction func joinTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "JoinController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginController")
         self.navigationController?.pushViewController(vc, animated: true)
 
     }

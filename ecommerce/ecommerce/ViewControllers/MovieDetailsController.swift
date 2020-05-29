@@ -176,15 +176,7 @@ class MovieDetailsController: UIViewController {
         
         favouriteList.persist(using: "favList")
        
-        
-        if favouriteList.contains(MovieDetailsController.recievedSelectedShow!) {
-            
 
-        }
-        else {
-            
-
-        }
         favouriteButton.contentMode = .scaleAspectFit
     }
     

@@ -13,6 +13,11 @@
 		04106644248033E20051716C /* FavouriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04106642248033E20051716C /* FavouriteTableViewCell.xib */; };
 		0410664624803E240051716C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410664524803E240051716C /* TabBarViewController.swift */; };
 		041066482480956F0051716C /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 041066472480956E0051716C /* GoogleService-Info.plist */; };
+		0410664A2480B6F70051716C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041066492480B6F70051716C /* LoginController.swift */; };
+		0410664C2480BC970051716C /* EmailLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410664B2480BC970051716C /* EmailLogin.swift */; };
+		0410664E2480BF570051716C /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410664D2480BF570051716C /* SignInController.swift */; };
+		041066502480BF640051716C /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0410664F2480BF640051716C /* SignUpController.swift */; };
+		04106652248142F30051716C /* LogOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04106651248142F30051716C /* LogOutController.swift */; };
 		0439EA18247D38B100C6A04A /* EmployeeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439EA17247D38B100C6A04A /* EmployeeListController.swift */; };
 		0439EA1A247D38C400C6A04A /* EmployeeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439EA19247D38C400C6A04A /* EmployeeDetailController.swift */; };
 		0439EA1D247D3C3100C6A04A /* EmployeeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439EA1B247D3C3100C6A04A /* EmployeeListTableViewCell.swift */; };
@@ -84,6 +89,11 @@
 		04106642248033E20051716C /* FavouriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteTableViewCell.xib; sourceTree = "<group>"; };
 		0410664524803E240051716C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		041066472480956E0051716C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		041066492480B6F70051716C /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		0410664B2480BC970051716C /* EmailLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLogin.swift; sourceTree = "<group>"; };
+		0410664D2480BF570051716C /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
+		0410664F2480BF640051716C /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		04106651248142F30051716C /* LogOutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutController.swift; sourceTree = "<group>"; };
 		0439EA17247D38B100C6A04A /* EmployeeListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListController.swift; sourceTree = "<group>"; };
 		0439EA19247D38C400C6A04A /* EmployeeDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailController.swift; sourceTree = "<group>"; };
 		0439EA1B247D3C3100C6A04A /* EmployeeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListTableViewCell.swift; sourceTree = "<group>"; };
@@ -177,6 +187,11 @@
 				0410663F2480330C0051716C /* FavouriteController.swift */,
 				04B026B92424C366003D4C69 /* AccountController.swift */,
 				0400F265247C3B2300A7C67C /* EmployeeController.swift */,
+				041066492480B6F70051716C /* LoginController.swift */,
+				04106651248142F30051716C /* LogOutController.swift */,
+				0410664B2480BC970051716C /* EmailLogin.swift */,
+				0410664D2480BF570051716C /* SignInController.swift */,
+				0410664F2480BF640051716C /* SignUpController.swift */,
 				0439EA17247D38B100C6A04A /* EmployeeListController.swift */,
 				0439EA19247D38C400C6A04A /* EmployeeDetailController.swift */,
 				0439EA23247D532A00C6A04A /* MapViewController.swift */,
@@ -609,15 +624,19 @@
 				041066482480956F0051716C /* GoogleService-Info.plist in Sources */,
 				0439EA21247D3C3F00C6A04A /* EmployeeDetailTableViewCell.swift in Sources */,
 				0400F266247C3B2300A7C67C /* EmployeeController.swift in Sources */,
+				04106652248142F30051716C /* LogOutController.swift in Sources */,
 				0450445424448DFC0006F374 /* LanguageCell.swift in Sources */,
 				0450445024448DEB0006F374 /* CountryCell.swift in Sources */,
 				0410664624803E240051716C /* TabBarViewController.swift in Sources */,
+				0410664C2480BC970051716C /* EmailLogin.swift in Sources */,
 				045F901D2475F55D00799E30 /* HomeTableViewCell.swift in Sources */,
 				045F902924796EC500799E30 /* SliderCollectionViewCell.swift in Sources */,
 				04B026BA2424C366003D4C69 /* AccountController.swift in Sources */,
 				0439EA24247D532A00C6A04A /* MapViewController.swift in Sources */,
+				041066502480BF640051716C /* SignUpController.swift in Sources */,
 				045F902524796D6800799E30 /* SliderTableViewCell.swift in Sources */,
 				041066402480330C0051716C /* FavouriteController.swift in Sources */,
+				0410664A2480B6F70051716C /* LoginController.swift in Sources */,
 				045F902C2479E2DD00799E30 /* MovieDetailsController.swift in Sources */,
 				04B026C22424F970003D4C69 /* models.swift in Sources */,
 				045F901424755EED00799E30 /* APIService.swift in Sources */,
@@ -630,6 +649,7 @@
 				0439EA18247D38B100C6A04A /* EmployeeListController.swift in Sources */,
 				04B026842424B1F7003D4C69 /* AppDelegate.swift in Sources */,
 				0439EA1A247D38C400C6A04A /* EmployeeDetailController.swift in Sources */,
+				0410664E2480BF570051716C /* SignInController.swift in Sources */,
 				04A551BD242CAD3F00E848E2 /* ChoiceListController.swift in Sources */,
 				04106643248033E20051716C /* FavouriteTableViewCell.swift in Sources */,
 				045F90302479E84400799E30 /* RelatedCollectionViewCell.swift in Sources */,
