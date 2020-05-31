@@ -20,6 +20,17 @@ class EmployeeController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        setupTheme()
+        
+    }
+    
+    func setupTheme() {
+        view.backgroundColor = Theme.color(type: .backgroundColor)
+    }
+    
     @IBAction func segmentTapped(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             listedView.isHidden = false

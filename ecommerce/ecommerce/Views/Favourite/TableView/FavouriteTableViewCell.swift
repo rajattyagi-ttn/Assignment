@@ -15,7 +15,8 @@ class FavouriteTableViewCell: UITableViewCell {
     @IBOutlet weak var favouriteRating: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        favouriteImageView.layer.cornerRadius = 10
+        favouriteImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

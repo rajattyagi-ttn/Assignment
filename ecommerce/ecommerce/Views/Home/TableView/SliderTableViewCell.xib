@@ -49,6 +49,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="contentView" destination="H2p-sc-9uM" id="VfN-Q8-Nm5"/>
                 <outlet property="sliderCollectionView" destination="xgE-Ru-rqX" id="hwe-VZ-JJb"/>
                 <outlet property="sliderPageController" destination="sZS-ft-KXE" id="dlZ-Po-MnN"/>
             </connections>

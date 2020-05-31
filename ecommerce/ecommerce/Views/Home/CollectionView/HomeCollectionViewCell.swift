@@ -10,6 +10,7 @@ import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var showPosterImageView: UIImageView!
     @IBOutlet weak var showNameLabel: UILabel!
@@ -17,13 +18,12 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         outerView.layer.cornerRadius = 10
         outerView.clipsToBounds = true
-        
-        
+
     }
 
-    
     func setPosterImage(image: UIImage) {
         showPosterImageView.image = image
     }

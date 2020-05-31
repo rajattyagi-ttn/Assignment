@@ -16,6 +16,7 @@ import AlamofireImage
 
 class MovieDetailsController: UIViewController {
 
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var showPosterImageView: UIImageView!
     @IBOutlet weak var showNameLabel: UILabel!
     @IBOutlet weak var showRatingLabel: UILabel!
@@ -39,6 +40,7 @@ class MovieDetailsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         getShowGenres(url: "https://api.themoviedb.org/3/movie/\(MovieDetailsController.recievedShowId!)?api_key=820016b7116f872f5f27bf56f9fdfb66&language=en-US")
         
         collectionView.delegate = self
@@ -52,6 +54,19 @@ class MovieDetailsController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        setupTheme()
+        
+    }
+    
+    func setupTheme() {
+        view.backgroundColor = Theme.color(type: .backgroundColor)
+        contentView.backgroundColor = Theme.color(type: .backgroundColor)
+    }
+    
+    //MARK:- Function to check if selected item in in array or not
     func contain(obj: ShowsResultModel, in array: [ShowsResultModel]) -> Bool {
         for i in 0..<array.count {
             if obj.id == array[i].id {
@@ -61,6 +76,7 @@ class MovieDetailsController: UIViewController {
         return false
     }
     
+    //MARK:- Getting Favourite list from userDefaults
     func fetchingFavourites() {
         if UserDefaults.standard.object(forKey: "favList") != nil {
             // fetching
@@ -70,12 +86,12 @@ class MovieDetailsController: UIViewController {
                 let doesContain = contain(obj: MovieDetailsController.recievedSelectedShow!, in: favouriteList)
                 if doesContain == true {
 
-                    favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    favouriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .normal)
                     isFavourite = true
                 }
                 else {
                     
-                    favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                    favouriteButton.setImage(#imageLiteral(resourceName: "HeartEmpty"), for: .normal)
                     isFavourite = false
                 }
             }
@@ -83,7 +99,7 @@ class MovieDetailsController: UIViewController {
         }
     }
 
-    
+    //MARK:- function to set details recieved from previous controller
     func setupMoviesDetails() {
         if MovieDetailsController.recievedSelectedShow?.name != nil {
             self.showNameLabel.text = MovieDetailsController.recievedSelectedShow?.name?.uppercased()
@@ -101,17 +117,15 @@ class MovieDetailsController: UIViewController {
                        self.showPosterImageView.image = image
                        self.showPosterImageView.contentMode = .scaleAspectFill
                }
-
            }
         }
         else {
             self.showPosterImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
         }
     }
-    
+    //MARK:- Function to get Genres of selected show
     func getShowGenres(url: String) {
-        
-        
+
         var array = [String]()
         let request = AF.request(url)
         request.responseJSON(completionHandler: { (data) in
@@ -149,6 +163,7 @@ class MovieDetailsController: UIViewController {
         
     }
     
+    //MARK:- Function to remove Element from Array
     func removeElement(element: ShowsResultModel, from Array: inout [ShowsResultModel]) -> Int {
         for i in 0..<Array.count {
             if Array[i].id == element.id {
@@ -159,17 +174,18 @@ class MovieDetailsController: UIViewController {
         return -1
     }
     
+    
     @IBAction func favouriteButtonTapped(_ sender: UIButton) {
         
         if isFavourite {
-            favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            favouriteButton.setImage(#imageLiteral(resourceName: "HeartEmpty"), for: .normal)
             removeElement(element: MovieDetailsController.recievedSelectedShow!, from: &favouriteList)
             isFavourite = false
         }
         
         else {
+            favouriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .normal)
             
-            favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             favouriteList.append(MovieDetailsController.recievedSelectedShow!)
             isFavourite = true
         }
@@ -183,6 +199,7 @@ class MovieDetailsController: UIViewController {
 }
 
 extension MovieDetailsController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         MovieDetailsController.recievedRelatedShowsArray!.count
     }
@@ -191,14 +208,22 @@ extension MovieDetailsController: UICollectionViewDelegate,UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "relatedCVCell", for: indexPath) as! RelatedCollectionViewCell
         
         let show = MovieDetailsController.recievedRelatedShowsArray?[indexPath.row]
-        AF.request(baseImageUrl + (show?.posterPath ?? "/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg")).responseImage { response in
-
-            if case .success(let image) = response.result {
-                cell.imageView.image = image
-                cell.imageView.contentMode = .scaleAspectFill
-            }
-
+        
+        if show?.posterPath == nil {
+            cell.imageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
         }
+        
+        else {
+            AF.request(baseImageUrl + (show!.posterPath!)).responseImage { response in
+
+                if case .success(let image) = response.result {
+                    cell.imageView.image = image
+                    cell.imageView.contentMode = .scaleAspectFill
+                }
+
+            }
+        }
+        
         
         return cell
     }
@@ -216,7 +241,14 @@ extension MovieDetailsController: UICollectionViewDelegate,UICollectionViewDataS
         array.append(MovieDetailsController.recievedSelectedShow!)
         let relatedArray = array
         
-        let imageUrl = baseImageUrl + (selectedItem?.posterPath ?? "/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg")
+        var imageUrl : String?
+        
+        if selectedItem?.posterPath == nil {
+            imageUrl = nil
+        }
+        else{
+            imageUrl = baseImageUrl + (selectedItem?.posterPath!)!
+        }
         
         MovieDetailsController.recievedSelectedShow = selectedItem
         MovieDetailsController.recievedShowId = selectedItem?.id
@@ -235,24 +267,3 @@ extension MovieDetailsController: UICollectionViewDelegate,UICollectionViewDataS
     
 }
 
-
-
-
-
-
-
-
-//extension MovieDetailsController: ShowDetailsDelegate {
-//    func setValues(posterImage: UIImage, name: String, rating: Double, details: String, relatedShows: [ResultModel], selectedShow: ResultModel) {
-//        self.showPosterImageView.image = posterImage
-//        self.showNameLabel.text = name
-//        self.showDetailsLabel.text = details
-//        self.showRatingLabel.text = rating.description
-//        self.relatedShowsArray = relatedShows
-//        self.selectedShow = selectedShow
-//    }
-//
-    
-    
-    
-//}

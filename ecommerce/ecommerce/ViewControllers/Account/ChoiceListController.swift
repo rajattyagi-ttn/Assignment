@@ -35,6 +35,17 @@ class ChoiceListController: UIViewController {
         let nib2 = UINib.init(nibName: "CountryListCell", bundle: nil)
         choiceListTableView.register(nib2, forCellReuseIdentifier: "countrylistcell")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        setupTheme()
+        
+    }
+    
+    func setupTheme() {
+        view.backgroundColor = Theme.color(type: .backgroundColor)
+    }
 
 }
 
@@ -76,12 +87,13 @@ extension ChoiceListController : UITableViewDelegate, UITableViewDataSource {
                 }.resume()
                 
             }
-            
+            cell.backgroundColor = Theme.color(type: .backgroundColor)
             return cell
         
         default:
             let cell = choiceListTableView.dequeueReusableCell(withIdentifier: "choicecell", for: indexPath) as! ChoiceCell
             cell.countryNameLabel.text = "\(LanguageList.languageItem[indexPath.row].languageName)"
+            cell.backgroundColor = Theme.color(type: .backgroundColor)
             return cell
         
         }

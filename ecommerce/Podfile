@@ -9,6 +9,7 @@ target 'ecommerce' do
   pod 'AlamofireImage'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'GoogleSignIn'
   
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
@@ -16,7 +17,9 @@ target 'ecommerce' do
   pod 'Firebase/Auth'
   # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
-
+  
+  pod 'FacebookLogin'
+  
   # Pods for ecommerce
 
   target 'ecommerceTests' do

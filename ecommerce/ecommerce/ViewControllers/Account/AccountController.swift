@@ -12,21 +12,26 @@ import FirebaseAuth
 
 class AccountController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    @IBOutlet weak var tableViewHeaderView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var jointStackView: UIView!
     
     
     let imagePicker = UIImagePickerController()
     let headerTitles = [" "," "]
     let countryIndex = 0
     let languageIndex = 1
-    let mapIndex = 3
+    let mapIndex = 0
+    let themeIndex = 4
     let defaultCountryCode = "in"
     let defaultCountryFlagImage = #imageLiteral(resourceName: "globe")
     let defaultLanguageName = "HINDI"
     var recievedCountryCode : String?
     var recievedLanguage : String?
+    var user = FireBaseLogin()
     
     public static var choice = CellMode.none
         
@@ -49,12 +54,16 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
         
         if Auth.auth().currentUser == nil
         {
-            welcomeLabel.text = "Welcome!"
+            jointStackView.isHidden = false
+            userNameLabel.isHidden = true
+
         }
         else
         {
-            let user:String = String(describing: Auth.auth().currentUser!.displayName!)
-            welcomeLabel.text = "Welcome \(user)!"
+            jointStackView.isHidden = true
+            userNameLabel.isHidden = false
+            let userName:String = String(describing: Auth.auth().currentUser!.displayName!)
+            userNameLabel.text = userName
         }
     }
     
@@ -62,9 +71,48 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
         super.viewDidAppear(animated)
         
         
+        if Auth.auth().currentUser == nil
+        {
+            jointStackView.isHidden = false
+            userNameLabel.isHidden = true
+
+        }
+        else
+        {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(userLogout))
+            jointStackView.isHidden = true
+            userNameLabel.isHidden = false
+            let userName:String = String(describing: Auth.auth().currentUser!.displayName!)
+            userNameLabel.text = userName
+        }
+        
         updateCountryAndLanguageCell()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
+        setupTheme()
+        
+    }
+    
+    func setupTheme() {
+        
+        view.backgroundColor = Theme.color(type: .backgroundColor)
+        tableView.backgroundColor = Theme.color(type: .backgroundColor)
+        tableViewHeaderView.backgroundColor = Theme.color(type: .backgroundColor)
+        tableView.reloadData()
+    }
+    
+    @objc func userLogout() {
+        
+        navigationItem.rightBarButtonItem = nil
+        jointStackView.isHidden = false
+        userNameLabel.isHidden = true
+        user.logoutUser(view: self)
+        showToast(controller: self, message: "user Logout", seconds: 0.25)
+
     }
     
     @IBAction func signInTapped(_ sender: UIButton) {
@@ -82,6 +130,7 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
     }
     
     func updateCountryAndLanguageCell() {
+        
         if let selectedCountry = self.recievedCountryCode {
              let countryIndexPath = IndexPath(row: countryIndex, section: 1)
             let countryCell = tableView.cellForRow(at: countryIndexPath) as! CountryCell
@@ -93,7 +142,6 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
                             
                             countryCell.setCountryFlagImageView(image: UIImage(data: data) ?? self.defaultCountryFlagImage)
                             countryCell.countryFlagImageView.contentMode = .scaleAspectFill
-
                         }
                     }
                 }.resume()
@@ -170,6 +218,8 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
                 }.resume()
                 
             }
+            
+            cell.backgroundColor = Theme.color(type: .backgroundColor)
             return cell
         }
         
@@ -179,7 +229,7 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
             cell.cellIconImageView.image = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowIcon
             cell.cellTitleLabel.text = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowName
             cell.languageNameLabel.text = String(defaultLanguageName.prefix(3))
-            
+            cell.backgroundColor = Theme.color(type: .backgroundColor)
             return cell
             
         }
@@ -190,7 +240,7 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
             cell.menuItemImageView.image = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowIcon
             cell.menuItemLabel.text = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowName
             cell.additionalLabel.isHidden = true
-            
+            cell.backgroundColor = Theme.color(type: .backgroundColor)
             return cell
         }
         
@@ -244,6 +294,13 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
         else if indexPath.row == mapIndex && indexPath.section == 0 {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+            
+        else if indexPath.row == themeIndex && indexPath.section == 1 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ThemeSelectionController") as! ThemeSelectionController
             
             self.navigationController?.pushViewController(vc, animated: true)
         }

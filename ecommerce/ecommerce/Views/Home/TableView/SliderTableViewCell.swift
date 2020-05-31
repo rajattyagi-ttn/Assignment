@@ -25,13 +25,16 @@ class SliderTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+//        sliderCollectionView.backgroundColor = Theme.color(type: .backgroundColor)
+        
         sliderCollectionView.delegate = self
         sliderCollectionView.dataSource = self
             
         let nib = UINib(nibName: "SliderCollectionViewCell", bundle: nil)
        sliderCollectionView.register(nib, forCellWithReuseIdentifier: "sliderCVCell")
         
-        
+        // Trending Api Call
         getShowsFrom(url: "https://api.themoviedb.org/3/trending/all/day?api_key=820016b7116f872f5f27bf56f9fdfb66")
         
         DispatchQueue.main.async {
@@ -39,12 +42,14 @@ class SliderTableViewCell: UITableViewCell {
         }
     }
 
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
        
     }
     
+    // Function to change Slider Image Automatically
     @objc func changeImage() {
         
         if counter<trendingShows.count {
@@ -65,9 +70,10 @@ class SliderTableViewCell: UITableViewCell {
         
     }
     
+    // Function to get API data from URL
+    
     func getShowsFrom(url: String) {
-        
-        
+
         let request = AF.request(url)
                 
         request.responseDecodable(of: ShowsBaseModel.self) { (response) in
@@ -89,24 +95,30 @@ extension SliderTableViewCell : UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       let cell = sliderCollectionView.dequeueReusableCell(withReuseIdentifier: "sliderCVCell", for: indexPath) as! SliderCollectionViewCell
-                  
-                  
-          AF.request("https://image.tmdb.org/t/p/w500\(trendingShows[indexPath.row].posterPath!)").responseImage { response in
-                  
-                  if case .success(let image) = response.result {
-                      cell.sliderImageView.image = image
-                    cell.sliderImageView.contentMode = .scaleAspectFill
-                  }
-              }
+        
+           let cell = sliderCollectionView.dequeueReusableCell(withReuseIdentifier: "sliderCVCell", for: indexPath) as! SliderCollectionViewCell
+                      
+                
+            if trendingShows[indexPath.row].posterPath == nil {
+                cell.sliderImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
+            }
+            else{
+            AF.request("https://image.tmdb.org/t/p/w500\(trendingShows[indexPath.row].posterPath!)").responseImage { response in
+                
+                    if case .success(let image) = response.result {
+                        cell.sliderImageView.image = image
+                      cell.sliderImageView.contentMode = .scaleAspectFill
+                    }
+                }
+            }
         
             return cell
         }
         
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            
-            return CGSize(width: 415, height: sliderCollectionView.frame.height)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: 415, height: sliderCollectionView.frame.height)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedItem = trendingShows[indexPath.row]
@@ -114,7 +126,13 @@ extension SliderTableViewCell : UICollectionViewDelegate, UICollectionViewDataSo
         array.remove(at: indexPath.row)
         let relatedArray = array
         
-        let imageUrl = baseImageUrl + selectedItem.posterPath!
+        var imageUrl : String?
+        if selectedItem.posterPath == nil {
+            imageUrl = nil
+        }
+        else{
+            imageUrl = baseImageUrl + selectedItem.posterPath!
+        }
         
         MovieDetailsController.recievedSelectedShow = selectedItem
         MovieDetailsController.recievedShowId = selectedItem.id
@@ -122,7 +140,7 @@ extension SliderTableViewCell : UICollectionViewDelegate, UICollectionViewDataSo
         MovieDetailsController.recievedRelatedShowsArray = relatedArray
         
         
-        cellDelegate?.colCategorySelected(indexPath)
+        cellDelegate?.showCellSelected(indexPath)
     }
     
 }

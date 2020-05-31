@@ -30,6 +30,18 @@ class EmployeeDetailController: UIViewController {
        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        setupTheme()
+        
+    }
+    
+    func setupTheme() {
+        view.backgroundColor = Theme.color(type: .backgroundColor)
+        detailTableView.backgroundColor = Theme.color(type: .backgroundColor)
+    }
+    
     func getEmployeeData() {
         let request = AF.request("http://dummy.restapiexample.com/api/v1/employees")
         
@@ -58,6 +70,7 @@ extension EmployeeDetailController: UITableViewDataSource, UITableViewDelegate {
         
         cell.employeeDetailsLabel.text = "ID : \(employeeArray[indexPath.row].id)  Salary : ₹ \(employeeArray[indexPath.row].employeeSalary) "
         
+        cell.backgroundColor = Theme.color(type: .backgroundColor)
         return cell
     }
     

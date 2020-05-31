@@ -9,11 +9,25 @@
 import UIKit
 import GoogleMaps
 import Firebase
+import FirebaseAuth
+import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
 
-let googleApiKey = "AIzaSyAya1A2gvsC8zZOwoOlm-gZB3ymr4bBcHE"
+let googleApiKey = "AIzaSyDiVI4Yeqp1Z2AjKwwAly21ucKqDgPdCWs"
 
+
+        
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+  
+    
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        
+    }
 
 
 
@@ -21,9 +35,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey(googleApiKey)
         FirebaseApp.configure()
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+//        GIDSignIn.sharedInstance().delegate = self
+        
+        FBLoginButton.superclass()
+        ApplicationDelegate.shared.application(application,didFinishLaunchingWithOptions: launchOptions)
+        
         return true
     }
-
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
+      -> Bool {
+        
+        let handled = ApplicationDelegate.shared.application(application,open: url,sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        
+        
+        GIDSignIn.sharedInstance().handle(url)
+        
+        return handled
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

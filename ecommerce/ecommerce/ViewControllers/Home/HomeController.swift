@@ -24,6 +24,17 @@ class HomeController: UIViewController {
         tableView.register(nib2, forCellReuseIdentifier: "sliderTVCell")
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        setupTheme()
+        
+    }
+    
+    func setupTheme() {
+        view.backgroundColor = Theme.color(type: .backgroundColor)
+        tableView.backgroundColor = Theme.color(type: .backgroundColor)
+    }
    
 
 }
@@ -39,6 +50,7 @@ extension HomeController: UITableViewDelegate,UITableViewDataSource {
         
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "sliderTVCell", for: indexPath) as! SliderTableViewCell
             cell2.cellDelegate = self
+            cell2.backgroundColor = Theme.color(type: .backgroundColor)
             return cell2
             
         }
@@ -46,7 +58,8 @@ extension HomeController: UITableViewDelegate,UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "showsTVCell", for: indexPath) as! HomeTableViewCell
             cell.collectionView.tag = indexPath.section - 1
             cell.delegate = self
-
+            
+            cell.backgroundColor = Theme.color(type: .backgroundColor)
             return cell
         }
         
@@ -69,7 +82,14 @@ extension HomeController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = UIColor.black
+//
+        if UserDefaults.standard.object(forKey: "backgroundColour") == nil {
+            view.tintColor = UIColor.black
+        }
+        else{
+            view.tintColor = Theme.color(type: .backgroundColor)
+        }
+        
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
     }
@@ -78,7 +98,7 @@ extension HomeController: UITableViewDelegate,UITableViewDataSource {
 
 
 extension HomeController: CellDelegate {
-    func colCategorySelected(_ indexPath : IndexPath){
+    func showCellSelected(_ indexPath : IndexPath){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailsController") as! MovieDetailsController
        

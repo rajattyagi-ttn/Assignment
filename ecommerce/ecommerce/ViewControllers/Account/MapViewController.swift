@@ -51,7 +51,7 @@ extension MapViewController: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     
-    let location = locations.first! as CLLocation
+    let location = locations.last! as CLLocation
     let currentLocation = location.coordinate
     
     mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)

@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-class manualLogin : login
+class FireBaseLogin : login
 {
     //MARK: User Login Function
     
@@ -21,9 +21,9 @@ class manualLogin : login
             
             //If no error occurs then complete the login process
             if error == nil{
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "AccountController")
-                view.navigationController?.pushViewController(vc, animated: true)
+                
+                view.navigationController?.popViewController(animated: true)
+
             }
                 
             //If the user is already logged in with an account then they need to logout to use another one
@@ -62,10 +62,7 @@ class manualLogin : login
         do {
             //Try signing out
             try Auth.auth().signOut()
-            //            let alertController = UIAlertController(title: "Logged Out", message: "Successfully Logged Out", preferredStyle: .alert)
-            //            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            //            alertController.addAction(defaultAction)
-            //            self.present(alertController, animated: true, completion: nil)
+            
         }
         catch let signOutError as NSError {
             //Catch error if any while signin out
@@ -105,6 +102,8 @@ class manualLogin : login
 
         else{
             
+            
+            
             Auth.auth().createUser(withEmail: Email, password: Password){ (user, error) in
                 if error == nil {
                     
@@ -118,14 +117,11 @@ class manualLogin : login
                         else {
                           // Profile updated.
                             print("Profile updated")
-                            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                            let vc = storyboard.instantiateViewController(withIdentifier: "AccountController")
-                            view.navigationController!.pushViewController(vc, animated: true)
+                           
+                            view.navigationController?.popViewController(animated: true)
+
                         }
                     }
-                    
-                    
-                    
                 }
                 else{
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)

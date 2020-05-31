@@ -32,25 +32,30 @@ class FavouriteController: UIViewController {
         favouriteTableView?.register(nib, forCellReuseIdentifier: "favouriteTVCell")
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-
-        DispatchQueue.main.async {
-
-            self.favouriteTableView?.reloadData()
-
-        }
+        super.viewWillAppear(true)
+        
+        setupTheme()
+        
     }
-
+    
+    func setupTheme() {
+        view.backgroundColor = Theme.color(type: .backgroundColor)
+        favouriteTableView.backgroundColor = Theme.color(type: .backgroundColor)
+    }
 
 }
 
 extension FavouriteController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         favouriteArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favouriteTableView.dequeueReusableCell(withIdentifier: "favouriteTVCell", for: indexPath) as! FavouriteTableViewCell
+        
         if favouriteArray[indexPath.row].name != nil {
             cell.favouriteName.text = favouriteArray[indexPath.row].name
         }
@@ -59,15 +64,21 @@ extension FavouriteController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.favouriteRating.text = favouriteArray[indexPath.row].voteAverage?.description
         
-        AF.request(baseImageUrl + (favouriteArray[indexPath.row].posterPath ?? "/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg")).responseImage { response in
-
-            if case .success(let image) = response.result {
-                cell.favouriteImageView.image = image
-                cell.favouriteImageView.contentMode = .scaleAspectFill
-            }
-
+        if favouriteArray[indexPath.row].posterPath == nil {
+            cell.favouriteImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
         }
         
+        else{
+            AF.request(baseImageUrl + (favouriteArray[indexPath.row].posterPath!)).responseImage { response in
+
+                if case .success(let image) = response.result {
+                    cell.favouriteImageView.image = image
+                    cell.favouriteImageView.contentMode = .scaleAspectFill
+                }
+
+            }
+        }
+        cell.backgroundColor = Theme.color(type: .backgroundColor)
         return cell
     
     }

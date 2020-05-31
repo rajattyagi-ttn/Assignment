@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+struct EmployeeBaseModel: Decodable {
+    var status: String
+    var data: [EmployeeResultModel]
+}
+
+
+struct EmployeeResultModel: Codable {
+    
+    let id: String
+    let employeeName: String
+    let employeeSalary: String
+    let employeeAge: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case employeeName = "employee_name"
+        case employeeSalary = "employee_salary"
+        case employeeAge = "employee_age"
+    }
+    
+}

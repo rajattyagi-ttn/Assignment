@@ -13,6 +13,8 @@ class SliderCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sliderImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
         sliderImageView.layer.cornerRadius = 10
         sliderImageView.clipsToBounds = true
     }

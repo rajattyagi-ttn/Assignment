@@ -28,6 +28,18 @@ class EmployeeListController: UIViewController {
        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        setupTheme()
+        
+    }
+    
+    func setupTheme() {
+        view.backgroundColor = Theme.color(type: .backgroundColor)
+        listTableView.backgroundColor = Theme.color(type: .backgroundColor)
+    }
+    
     func getEmployeeData() {
         let request = AF.request("http://dummy.restapiexample.com/api/v1/employees")
 
@@ -50,13 +62,12 @@ extension EmployeeListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = listTableView.dequeueReusableCell(withIdentifier: "employeeListTVCell", for: indexPath) as! EmployeeListTableViewCell
-               
-        print(employeeArray[indexPath.row].id)
+            
         cell.employeeIDLabel.text = "ID : \(employeeArray[indexPath.row].id)"
-//        print(cell.employeeIdLabel.text)
+
         cell.employeeNameLabel.text = "Name : \(employeeArray[indexPath.row].employeeName)"
-        print(cell.employeeNameLabel.text)
-               
+        
+        cell.backgroundColor = Theme.color(type: .backgroundColor)
         return cell
     }
     
