@@ -106,7 +106,18 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
             }
 
             cell.outerView.backgroundColor = Theme.color(type: .backgroundColor)
-         
+            
+            print(Theme.Fonts.fontColor().description)
+            
+            if Theme.Fonts.fontColor() == UIColor.init(red: 0, green: 0, blue: 0, alpha: 1) {
+                cell.innerView.backgroundColor = UIColor.white
+                
+            }
+            else {
+                let color = HexToUIColor.hexStringToUIColor(hex: "1F2124")
+                cell.innerView.backgroundColor = color
+                
+            }
             
             cell.outerView.layer.cornerRadius = 10
             cell.outerView.clipsToBounds = true

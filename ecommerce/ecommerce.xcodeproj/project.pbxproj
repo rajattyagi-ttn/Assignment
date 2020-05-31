@@ -66,6 +66,9 @@
 		04B026BF2424C3E3003D4C69 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B026BB2424C3D8003D4C69 /* AccountCell.swift */; };
 		04B026C02424F7C9003D4C69 /* AccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B026BC2424C3D8003D4C69 /* AccountCell.xib */; };
 		04B026C22424F970003D4C69 /* models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B026C12424F970003D4C69 /* models.swift */; };
+		04B16D0B2483C6F9007795FB /* BrandColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B16D0A2483C6F9007795FB /* BrandColorController.swift */; };
+		04B16D0D2483CB76007795FB /* FontStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B16D0C2483CB76007795FB /* FontStyleController.swift */; };
+		04B16D0F2483CB8C007795FB /* FontColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B16D0E2483CB8C007795FB /* FontColorController.swift */; };
 		076CDB1DEFFEE7D7B51B5428 /* Pods_ecommerce_ecommerceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698E03F0C9D6ED6C106DCF65 /* Pods_ecommerce_ecommerceUITests.framework */; };
 		7214385DCF4686C0E9AB91DF /* Pods_ecommerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF206BAA7C823884DAC4819E /* Pods_ecommerce.framework */; };
 		782F97663A2B7591A8C330C4 /* Pods_ecommerceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D988A466F47C386254C109 /* Pods_ecommerceTests.framework */; };
@@ -153,6 +156,9 @@
 		04B026BB2424C3D8003D4C69 /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		04B026BC2424C3D8003D4C69 /* AccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCell.xib; sourceTree = "<group>"; };
 		04B026C12424F970003D4C69 /* models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = models.swift; sourceTree = "<group>"; };
+		04B16D0A2483C6F9007795FB /* BrandColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandColorController.swift; sourceTree = "<group>"; };
+		04B16D0C2483CB76007795FB /* FontStyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyleController.swift; sourceTree = "<group>"; };
+		04B16D0E2483CB8C007795FB /* FontColorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorController.swift; sourceTree = "<group>"; };
 		10D6457392F6C0CFE537483F /* Pods-ecommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommerce.release.xcconfig"; path = "Target Support Files/Pods-ecommerce/Pods-ecommerce.release.xcconfig"; sourceTree = "<group>"; };
 		5A543FE6DEDA0963635A7917 /* Pods-ecommerceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommerceTests.debug.xcconfig"; path = "Target Support Files/Pods-ecommerceTests/Pods-ecommerceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		698E03F0C9D6ED6C106DCF65 /* Pods_ecommerce_ecommerceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecommerce_ecommerceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,8 +243,11 @@
 				0410664F2480BF640051716C /* SignUpController.swift */,
 				0439EA23247D532A00C6A04A /* MapViewController.swift */,
 				04A551BC242CAD3F00E848E2 /* ChoiceListController.swift */,
+				04B16D0A2483C6F9007795FB /* BrandColorController.swift */,
 				041066752483682B0051716C /* ThemeSelectionController.swift */,
 				0410667724836D400051716C /* BackgroundColorController.swift */,
+				04B16D0C2483CB76007795FB /* FontStyleController.swift */,
+				04B16D0E2483CB8C007795FB /* FontColorController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -784,6 +793,7 @@
 				0450445424448DFC0006F374 /* LanguageCell.swift in Sources */,
 				0450445024448DEB0006F374 /* CountryCell.swift in Sources */,
 				0410664624803E240051716C /* TabBarViewController.swift in Sources */,
+				04B16D0D2483CB76007795FB /* FontStyleController.swift in Sources */,
 				0410664C2480BC970051716C /* EmailLogin.swift in Sources */,
 				045F901D2475F55D00799E30 /* HomeTableViewCell.swift in Sources */,
 				041066682481CA9C0051716C /* ShowModel.swift in Sources */,
@@ -800,11 +810,13 @@
 				04B026BF2424C3E3003D4C69 /* AccountCell.swift in Sources */,
 				0439EA1D247D3C3100C6A04A /* EmployeeListTableViewCell.swift in Sources */,
 				045F90212475F7F500799E30 /* HomeCollectionViewCell.swift in Sources */,
+				04B16D0B2483C6F9007795FB /* BrandColorController.swift in Sources */,
 				04A551C0242CADCF00E848E2 /* ChoiceCell.swift in Sources */,
 				0410666E2482C2AC0051716C /* PasswordResetController.swift in Sources */,
 				0450445824449AB90006F374 /* CountryListCell.swift in Sources */,
 				04106674248367D20051716C /* Theme.swift in Sources */,
 				041066722482F8F50051716C /* AccountComponents.swift in Sources */,
+				04B16D0F2483CB8C007795FB /* FontColorController.swift in Sources */,
 				045F9016247563D300799E30 /* HomeController.swift in Sources */,
 				0410666B2481CB000051716C /* EmployeeModel.swift in Sources */,
 				0439EA18247D38B100C6A04A /* EmployeeListController.swift in Sources */,

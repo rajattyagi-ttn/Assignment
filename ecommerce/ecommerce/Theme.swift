@@ -37,8 +37,8 @@ class Theme {
         
         static func font() -> UIFont {
             
-            guard let fontFromUserDefault = UserDefaults.standard.object(forKey: "font") as? String else{ return UIFont(name: "Verdana-Italic", size: 16)! }
-            return UIFont(name: fontFromUserDefault, size: 17)!
+            guard let fontFromUserDefault = UserDefaults.standard.object(forKey: "font") as? String else{ return UIFont(name: "Verdana-Italic", size: 14)! }
+            return UIFont(name: fontFromUserDefault, size: 14)!
             
         }
         static func fontColor () -> UIColor {
@@ -51,17 +51,21 @@ class Theme {
     }
     
     static public func updateDisplay() {
-        let proxyButton = UIButton.appearance()
-        proxyButton.backgroundColor = Theme.color(type: .brandColor)
-        proxyButton.titleLabel?.font = Theme.Fonts.font()
-//        proxyButton.tintColor = Theme.Fonts.fontColor()
-        proxyButton.titleLabel?.backgroundColor = Theme.color(type: .brandColor)
+//        let proxyButton = UIButton.appearance()
+//        proxyButton.backgroundColor = Theme.color(type: .brandColor)
+//        proxyButton.titleLabel?.font = Theme.Fonts.font()
+////        proxyButton.tintColor = Theme.Fonts.fontColor()
+//        proxyButton.titleLabel?.backgroundColor = Theme.color(type: .brandColor)
+//
+//
+//        let proxyView = UIView.appearance()
+//
+//        proxyView.backgroundColor = Theme.color(type: .backgroundColor)
 
         
-        let proxyView = UIView.appearance()
-        
-        proxyView.backgroundColor = Theme.color(type: .backgroundColor)
-
+        let proxyLabel = UILabel.appearance()
+        proxyLabel.textColor = Theme.Fonts.fontColor()
+        proxyLabel.font = Theme.Fonts.font()
         
 //        let proxynav = UINavigationBar.appearance()
 //        proxynav.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blue]

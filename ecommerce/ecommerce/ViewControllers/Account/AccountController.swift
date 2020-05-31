@@ -71,6 +71,7 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
         super.viewDidAppear(animated)
         
         
+        
         if Auth.auth().currentUser == nil
         {
             jointStackView.isHidden = false

@@ -34,6 +34,9 @@ class HomeController: UIViewController {
     func setupTheme() {
         view.backgroundColor = Theme.color(type: .backgroundColor)
         tableView.backgroundColor = Theme.color(type: .backgroundColor)
+        
+        
+        
     }
    
 
@@ -51,6 +54,8 @@ extension HomeController: UITableViewDelegate,UITableViewDataSource {
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "sliderTVCell", for: indexPath) as! SliderTableViewCell
             cell2.cellDelegate = self
             cell2.backgroundColor = Theme.color(type: .backgroundColor)
+            
+            
             return cell2
             
         }
@@ -60,6 +65,7 @@ extension HomeController: UITableViewDelegate,UITableViewDataSource {
             cell.delegate = self
             
             cell.backgroundColor = Theme.color(type: .backgroundColor)
+            
             return cell
         }
         
@@ -82,16 +88,21 @@ extension HomeController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//
-        if UserDefaults.standard.object(forKey: "backgroundColour") == nil {
+        
+        
+        if Theme.Fonts.fontColor() == UIColor.init(red: 0, green: 0, blue: 0, alpha: 1) {
+            
+            view.tintColor = UIColor.white
+            
+        }
+        else {
             view.tintColor = UIColor.black
         }
-        else{
-            view.tintColor = Theme.color(type: .backgroundColor)
-        }
+        
+       
         
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.textColor = Theme.Fonts.fontColor()
     }
     
 }

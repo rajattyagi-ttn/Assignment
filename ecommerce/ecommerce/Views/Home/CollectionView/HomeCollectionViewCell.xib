@@ -59,7 +59,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <color key="backgroundColor" red="0.12190238389999999" green="0.12918049100000001" blue="0.1423901618" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="lnQ-Ic-FRv" firstAttribute="leading" secondItem="UEy-Tu-aes" secondAttribute="leading" constant="10" id="Bnh-NE-LmG"/>
                                     <constraint firstAttribute="bottom" secondItem="Rpo-fl-iYK" secondAttribute="bottom" constant="8" id="CVp-3A-df7"/>
