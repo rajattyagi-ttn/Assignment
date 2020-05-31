@@ -13,6 +13,7 @@ class SignUpController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var passwordConfirmTextfield: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
     
     var signup = manualLogin()
     
@@ -24,15 +25,8 @@ class SignUpController: UIViewController {
     
 
     @IBAction func signUpTapped(_ sender: UIButton) {
-        signup.signUpUser(Email: emailTextField.text ?? "", Password: passwordTextfield.text ?? "", rePassword: passwordConfirmTextfield.text ?? "", view: self)
+        signup.signUpUser(Email: emailTextField.text ?? "", name: userNameTextField.text ?? "", Password: passwordTextfield.text ?? "", rePassword: passwordConfirmTextfield.text ?? "", view: self)
     }
     
-    @IBAction func logoutTapped(_ sender: UIButton) {
-        signup.logoutUser(view: self)
-        
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AccountController")
-        self.navigationController!.pushViewController(vc, animated: true)
-    }
     
 }

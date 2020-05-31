@@ -76,7 +76,7 @@ class manualLogin : login
     }
     
     //MARK: User Signup Function
-    func signUpUser(Email: String, Password: String, rePassword: String, view: UIViewController) {
+    func signUpUser(Email: String, name: String, Password: String, rePassword: String, view: UIViewController) {
         
         //Check for password and re-typed password
 
@@ -104,11 +104,28 @@ class manualLogin : login
         //If no error occurs then complete the Sign up process
 
         else{
+            
             Auth.auth().createUser(withEmail: Email, password: Password){ (user, error) in
                 if error == nil {
-                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "AccountController")
-                    view.navigationController!.pushViewController(vc, animated: true)
+                    
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    changeRequest?.displayName = name
+                    
+                    changeRequest?.commitChanges { error in
+                        if let err = error {
+                          print("Failed to Update Name")
+                        }
+                        else {
+                          // Profile updated.
+                            print("Profile updated")
+                            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                            let vc = storyboard.instantiateViewController(withIdentifier: "AccountController")
+                            view.navigationController!.pushViewController(vc, animated: true)
+                        }
+                    }
+                    
+                    
+                    
                 }
                 else{
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)

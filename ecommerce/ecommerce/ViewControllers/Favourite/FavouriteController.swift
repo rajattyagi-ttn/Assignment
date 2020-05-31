@@ -11,6 +11,7 @@ import Alamofire
 
 class FavouriteController: UIViewController {
 
+
     @IBOutlet weak var favouriteTableView: UITableView!
     
     var favouriteArray = [ShowsResultModel]()
@@ -25,22 +26,23 @@ class FavouriteController: UIViewController {
             favouriteArray = fetchedArray
             }
         }
+  
         
         let nib = UINib(nibName: "FavouriteTableViewCell", bundle: nil)
-        favouriteTableView.register(nib, forCellReuseIdentifier: "favouriteTVCell")
+        favouriteTableView?.register(nib, forCellReuseIdentifier: "favouriteTVCell")
         
     }
     override func viewWillAppear(_ animated: Bool) {
 
         DispatchQueue.main.async {
 
-            self.favouriteTableView.reloadData()
+            self.favouriteTableView?.reloadData()
+
         }
     }
 
 
 }
-
 
 extension FavouriteController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,12 +68,13 @@ extension FavouriteController: UITableViewDelegate, UITableViewDataSource {
 
         }
         
-        
         return cell
+    
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
 }
+
+

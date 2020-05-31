@@ -12,7 +12,7 @@ import FirebaseAuth
 protocol login {
     func signInUser(Email: String, Password: String, view: UIViewController)
 //    func logoutUser(view: UIViewController)
-    func signUpUser(Email: String, Password: String, rePassword: String, view: UIViewController)
+    func signUpUser(Email: String, name: String, Password: String, rePassword: String, view: UIViewController)
 }
 
 class LoginController: UIViewController {

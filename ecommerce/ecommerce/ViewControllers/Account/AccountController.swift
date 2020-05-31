@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 
 class AccountController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var welcomeLabel: UILabel!
     
     
     let imagePicker = UIImagePickerController()
@@ -44,6 +46,16 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
         imagePicker.delegate = self
         
         configureImageView()
+        
+        if Auth.auth().currentUser == nil
+        {
+            welcomeLabel.text = "Welcome!"
+        }
+        else
+        {
+            let user:String = String(describing: Auth.auth().currentUser!.displayName!)
+            welcomeLabel.text = "Welcome \(user)!"
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
