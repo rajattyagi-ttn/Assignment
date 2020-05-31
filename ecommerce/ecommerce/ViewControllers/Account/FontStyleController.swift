@@ -45,7 +45,7 @@ extension FontStyleController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         UserDefaults.standard.set(fonts[indexPath.row], forKey: "font")
-        Theme.updateDisplay()
+        Theme.updateFont()
         self.navigationController?.popViewController(animated: true)
     }
     

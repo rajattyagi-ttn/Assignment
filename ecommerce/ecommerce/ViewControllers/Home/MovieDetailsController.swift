@@ -23,6 +23,7 @@ class MovieDetailsController: UIViewController {
     @IBOutlet weak var showDetailsTextView: UITextView!
     @IBOutlet weak var showGenresLabel: UILabel!
     @IBOutlet weak var favouriteButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
     static var recievedRelatedShowsArray: [ShowsResultModel]?
@@ -64,6 +65,19 @@ class MovieDetailsController: UIViewController {
     func setupTheme() {
         view.backgroundColor = Theme.color(type: .backgroundColor)
         contentView.backgroundColor = Theme.color(type: .backgroundColor)
+        
+        if UserDefaults.standard.object(forKey: "brandColour") != nil {
+            playButton.backgroundColor = Theme.color(type: .brandColor)
+        }
+        
+        if UserDefaults.standard.object(forKey: "fontColor") != nil {
+            playButton.setTitleColor(Theme.Fonts.fontColor(), for: .normal)
+        }
+        
+        if UserDefaults.standard.object(forKey: "font") != nil {
+           playButton.titleLabel?.font = Theme.Fonts.font()
+       }
+        
     }
     
     //MARK:- Function to check if selected item in in array or not
@@ -86,12 +100,12 @@ class MovieDetailsController: UIViewController {
                 let doesContain = contain(obj: MovieDetailsController.recievedSelectedShow!, in: favouriteList)
                 if doesContain == true {
 
-                    favouriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .normal)
+                    favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     isFavourite = true
                 }
                 else {
                     
-                    favouriteButton.setImage(#imageLiteral(resourceName: "HeartEmpty"), for: .normal)
+                    favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
                     isFavourite = false
                 }
             }
@@ -178,14 +192,13 @@ class MovieDetailsController: UIViewController {
     @IBAction func favouriteButtonTapped(_ sender: UIButton) {
         
         if isFavourite {
-            favouriteButton.setImage(#imageLiteral(resourceName: "HeartEmpty"), for: .normal)
+            favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
             removeElement(element: MovieDetailsController.recievedSelectedShow!, from: &favouriteList)
             isFavourite = false
         }
         
         else {
-            favouriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .normal)
-            
+            favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             favouriteList.append(MovieDetailsController.recievedSelectedShow!)
             isFavourite = true
         }

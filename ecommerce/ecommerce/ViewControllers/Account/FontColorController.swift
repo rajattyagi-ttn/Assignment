@@ -27,7 +27,7 @@ class FontColorController: UIViewController {
             UserDefaults.standard.set("#000000", forKey: "fontColor")
         }
         
-        Theme.updateDisplay()
+        Theme.updateFontColor()
         self.navigationController?.popViewController(animated: true)
 
     }

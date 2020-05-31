@@ -26,6 +26,8 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
     let languageIndex = 1
     let mapIndex = 0
     let themeIndex = 4
+    let movieIndex = 1
+    let employeeIndex = 3
     let defaultCountryCode = "in"
     let defaultCountryFlagImage = #imageLiteral(resourceName: "globe")
     let defaultLanguageName = "HINDI"
@@ -306,6 +308,20 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
+        else if indexPath.row == movieIndex && indexPath.section == 0 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "HomeController") 
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+            
+        else if indexPath.row == employeeIndex && indexPath.section == 0 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "EmployeeController")
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+            
         else {
             showToast(controller: self, message: "\(AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowName)", seconds: 1.0)
         }

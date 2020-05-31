@@ -46,13 +46,11 @@ class LoginController: UIViewController {
     
     func setupTheme() {
         
-        if UserDefaults.standard.object(forKey: "backgroundColour") == nil {
-            view.backgroundColor = UIColor.black
-        }
-        else{
+        if UserDefaults.standard.object(forKey: "backgroundColour") != nil {
             view.backgroundColor = Theme.color(type: .backgroundColor)
             contentView.backgroundColor = Theme.color(type: .backgroundColor)
         }
+        
         
         
         

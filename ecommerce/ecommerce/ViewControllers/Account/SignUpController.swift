@@ -10,11 +10,14 @@ import UIKit
 
 class SignUpController: UIViewController {
 
+    @IBOutlet weak var signUpMessageLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var passwordConfirmTextfield: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var securityAnswerTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var securityQuestionLabel: UILabel!
     
     var signup = FireBaseLogin()
     
@@ -44,6 +47,23 @@ class SignUpController: UIViewController {
         else{
             view.backgroundColor = Theme.color(type: .backgroundColor)
         }
+        
+        if UserDefaults.standard.object(forKey: "brandColour") != nil {
+            signUpButton.backgroundColor = Theme.color(type: .brandColor)
+         }
+         
+         if UserDefaults.standard.object(forKey: "fontColor") != nil {
+            signUpButton.setTitleColor(Theme.Fonts.fontColor(), for: .normal)
+            signUpMessageLabel.textColor = Theme.Fonts.fontColor()
+            securityQuestionLabel.textColor = Theme.Fonts.fontColor()
+         }
+         
+         if UserDefaults.standard.object(forKey: "font") != nil {
+            signUpButton.titleLabel?.font = Theme.Fonts.font()
+            signUpMessageLabel.font = Theme.Fonts.font()
+            securityQuestionLabel.font = Theme.Fonts.font()
+        }
+        
     }
     
 

@@ -15,9 +15,11 @@ import FBSDKLoginKit
 class SignInController: UIViewController{
     
 
+    @IBOutlet weak var signInMessageLabel: UILabel!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
+    @IBOutlet weak var manualSignInButton: UIButton!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
     @IBOutlet weak var fbSignInButton: FBLoginButton!
     @IBOutlet weak var forgetPasswordLabel: UILabel!
@@ -69,6 +71,22 @@ class SignInController: UIViewController{
         }
         else{
             view.backgroundColor = Theme.color(type: .backgroundColor)
+        }
+        
+        if UserDefaults.standard.object(forKey: "brandColour") != nil {
+             manualSignInButton.backgroundColor = Theme.color(type: .brandColor)
+         }
+         
+         if UserDefaults.standard.object(forKey: "fontColor") != nil {
+            manualSignInButton.setTitleColor(Theme.Fonts.fontColor(), for: .normal)
+            signInMessageLabel.textColor = Theme.Fonts.fontColor()
+            forgetPasswordLabel.textColor = Theme.Fonts.fontColor()
+         }
+         
+         if UserDefaults.standard.object(forKey: "font") != nil {
+            manualSignInButton.titleLabel?.font = Theme.Fonts.font()
+            signInMessageLabel.font = Theme.Fonts.font()
+            forgetPasswordLabel.font = Theme.Fonts.font()
         }
         
     }

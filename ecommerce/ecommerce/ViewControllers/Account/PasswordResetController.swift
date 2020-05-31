@@ -38,6 +38,10 @@ class PasswordResetController: UIViewController {
         securityAnswerTextField.isHidden = true
         submitButton.isHidden = true
         newPasswordTextfield.isHidden = true
+        
+        emailTextField.delegate = self
+        securityAnswerTextField.delegate = self
+        newPasswordTextfield.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,14 +79,11 @@ class PasswordResetController: UIViewController {
         }
         else{
             resetChoiceLabel.isHidden = false
-            byEmailButton.isHidden = true
-            bySecurityQuestionButton.isHidden = true
-            emailTextField.isHidden = false
-            securityQuestionLabel.isHidden = false
-            securityAnswerTextField.isHidden = false
-            submitButton.isHidden = false
-            newPasswordTextfield.isHidden = true
-            byEmail = false
+            
+            
+            
+            
+            self.byEmail = false
             
             let email = emailTextField.text
             let oldPass = UserDefaults.standard.string(forKey: "\(email)userPassword") ?? ""
@@ -93,9 +94,28 @@ class PasswordResetController: UIViewController {
                 if error == nil{
                     
                     print("Successfuly login in password reset")
+                    self.securityAnswerTextField.isHidden = false
+                    self.byEmailButton.isHidden = true
+                    self.bySecurityQuestionButton.isHidden = true
+                    self.emailTextField.isHidden = false
+                    self.securityQuestionLabel.isHidden = false
+                    self.submitButton.isHidden = false
+                    
 
                 }
                 else{
+                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    self.securityAnswerTextField.isHidden = true
+                    self.newPasswordTextfield.isHidden = true
+                    self.byEmailButton.isHidden = false
+                    self.bySecurityQuestionButton.isHidden = false
+                    self.emailTextField.isHidden = false
+                    self.securityQuestionLabel.isHidden = true
+                    self.submitButton.isHidden = true
                     print("Some Error Occured in Password reset login", error)
                 }
             }
@@ -199,4 +219,13 @@ class PasswordResetController: UIViewController {
         
     }
     
+}
+
+extension PasswordResetController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
 }

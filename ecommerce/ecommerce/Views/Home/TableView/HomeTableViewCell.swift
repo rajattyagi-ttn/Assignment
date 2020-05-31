@@ -32,8 +32,6 @@ class HomeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        collectionView.backgroundColor = Theme.color(type: .backgroundColor)
-        
         self.showCategories = [[ShowsResultModel](),[ShowsResultModel](),[ShowsResultModel](),[ShowsResultModel]()]
         //Best Drama Api call
         getShowsFrom(url: "https://api.themoviedb.org/3/discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10&api_key=820016b7116f872f5f27bf56f9fdfb66", index: 0)
@@ -52,7 +50,7 @@ class HomeTableViewCell: UITableViewCell {
 
     }
 
-    
+    //MARK:- Function to get shows From API Call
     func getShowsFrom(url: String, index: Int) {
             
             
@@ -101,30 +99,28 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         cell.showPosterImageView.image = image
                         cell.showPosterImageView.contentMode = .scaleAspectFill
                     }
-
                 }
             }
-
-            cell.outerView.backgroundColor = Theme.color(type: .backgroundColor)
+            // Applying Theme on CollectionViewCell
             
-            print(Theme.Fonts.fontColor())
+           
             if Theme.Fonts.fontColor() == UIColor.init(red: 0, green: 0, blue: 0, alpha: 1) {
-                print("Inside Black")
+               
                 cell.innerView.backgroundColor = UIColor.white
                 cell.showNameLabel.textColor = UIColor.black
                 cell.showPopularityLabel.textColor = UIColor.black
                 cell.showGenreLabel.textColor = UIColor.black
+                cell.dolbyImageView.image = #imageLiteral(resourceName: "DolbyDigital")
                 
             }
             else {
-                print("inside grey cell inner")
+                
                 let color = HexToUIColor.hexStringToUIColor(hex: "1F2124")
                 cell.innerView.backgroundColor = color
-                
+                cell.showNameLabel.textColor = UIColor.white
+                cell.showPopularityLabel.textColor = UIColor.white
+                cell.showGenreLabel.textColor = UIColor.white
             }
-            
-            cell.outerView.layer.cornerRadius = 10
-            cell.outerView.clipsToBounds = true
             
             return cell
         }
@@ -134,21 +130,28 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
             cell.showNameLabel.text = "Loading..."
             cell.showPopularityLabel.text = "Loading..."
             
+            // Applying Theme on CollectionViewCell
 
-            cell.outerView.backgroundColor = Theme.color(type: .backgroundColor)
+            
             
             if Theme.Fonts.fontColor() == UIColor.init(red: 0, green: 0, blue: 0, alpha: 1) {
-                print("inside grey cell inner")
+                
                 cell.innerView.backgroundColor = UIColor.white
+                cell.showNameLabel.textColor = UIColor.black
+                cell.showPopularityLabel.textColor = UIColor.black
+                cell.showGenreLabel.textColor = UIColor.black
+                cell.dolbyImageView.image = #imageLiteral(resourceName: "DolbyDigital")
                 
             }
             else {
-                print("inside grey cell inner")
+                
                 let color = HexToUIColor.hexStringToUIColor(hex: "1F2124")
                 cell.innerView.backgroundColor = color
+                cell.showNameLabel.textColor = UIColor.white
+                cell.showPopularityLabel.textColor = UIColor.white
+                cell.showGenreLabel.textColor = UIColor.white
                 
             }
-            
 
             return cell
         }

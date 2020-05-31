@@ -17,41 +17,49 @@ class ThemeSelectionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if UserDefaults.standard.object(forKey: "brandColour") == nil {
-            UserDefaults.standard.set("#32a852", forKey: "brandColour")
-        }
-        if UserDefaults.standard.object(forKey: "backgroundColour") == nil {
-            UserDefaults.standard.set("#ffffff", forKey: "backgroundColour")
-        }
-        
-        if UserDefaults.standard.object(forKey: "font") == nil {
-            UserDefaults.standard.set("Verdana-Bold", forKey: "font")
-        }
-        
-        if UserDefaults.standard.object(forKey: "fontColor") == nil {
-            UserDefaults.standard.set("#ffffff", forKey: "fontColor")
-        }
+//        if UserDefaults.standard.object(forKey: "brandColour") == nil {
+//            UserDefaults.standard.set("#32a852", forKey: "brandColour")
+//        }
+//        if UserDefaults.standard.object(forKey: "backgroundColour") == nil {
+//            UserDefaults.standard.set("#ffffff", forKey: "backgroundColour")
+//        }
+//
+//        if UserDefaults.standard.object(forKey: "font") == nil {
+//            UserDefaults.standard.set("Verdana-Bold", forKey: "font")
+//        }
+//
+//        if UserDefaults.standard.object(forKey: "fontColor") == nil {
+//            UserDefaults.standard.set("#ffffff", forKey: "fontColor")
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.backgroundColor = Theme.color(type: .backgroundColor)
         
-        backgroundColorButton.backgroundColor = Theme.color(type: .brandColor)
-        backgroundColorButton.titleLabel?.font = Theme.Fonts.font()
-        backgroundColorButton.tintColor = Theme.Fonts.fontColor()
+        if UserDefaults.standard.object(forKey: "brandColour") != nil {
+            backgroundColorButton.backgroundColor = Theme.color(type: .brandColor)
+            brandColorButton.backgroundColor = Theme.color(type: .brandColor)
+            fontsButton.backgroundColor = Theme.color(type: .brandColor)
+            fontColorButton.backgroundColor = Theme.color(type: .brandColor)
+        }
+        if UserDefaults.standard.object(forKey: "backgroundColour") != nil {
+            view.backgroundColor = Theme.color(type: .backgroundColor)
+        }
+
+        if UserDefaults.standard.object(forKey: "font") != nil {
+            backgroundColorButton.titleLabel?.font = Theme.Fonts.font()
+            brandColorButton.titleLabel?.font = Theme.Fonts.font()
+            fontsButton.titleLabel?.font = Theme.Fonts.font()
+            fontColorButton.titleLabel?.font = Theme.Fonts.font()
+        }
+
+        if UserDefaults.standard.object(forKey: "fontColor") != nil {
+            backgroundColorButton.setTitleColor(Theme.Fonts.fontColor(), for: .normal)
+            brandColorButton.setTitleColor(Theme.Fonts.fontColor(), for: .normal)
+            fontsButton.setTitleColor(Theme.Fonts.fontColor(), for: .normal)
+            fontColorButton.setTitleColor(Theme.Fonts.fontColor(), for: .normal)
+        }
         
-        brandColorButton.backgroundColor = Theme.color(type: .brandColor)
-        brandColorButton.titleLabel?.font = Theme.Fonts.font()
-        brandColorButton.tintColor = Theme.Fonts.fontColor()
-        
-        fontsButton.backgroundColor = Theme.color(type: .brandColor)
-        fontsButton.titleLabel?.font = Theme.Fonts.font()
-        fontsButton.tintColor = Theme.Fonts.fontColor()
-        
-        fontColorButton.backgroundColor = Theme.color(type: .brandColor)
-        fontColorButton.titleLabel?.font = Theme.Fonts.font()
-        fontColorButton.tintColor = Theme.Fonts.fontColor()
         
     }
     

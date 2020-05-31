@@ -50,16 +50,16 @@ class Theme {
         
     }
     
-    static public func updateDisplay() {
+    static public func updateFont() {
 
-
-        
         let proxyLabel = UILabel.appearance()
-        proxyLabel.textColor = Theme.Fonts.fontColor()
         proxyLabel.font = Theme.Fonts.font()
         
-//        let proxynav = UINavigationBar.appearance()
-//        proxynav.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blue]
+    }
+    
+    static public func updateFontColor() {
+        let proxyLabel = UILabel.appearance()
+        proxyLabel.textColor = Theme.Fonts.fontColor()
     }
 }
 

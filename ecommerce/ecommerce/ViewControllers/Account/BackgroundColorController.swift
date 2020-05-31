@@ -46,40 +46,38 @@ class BackgroundColorController: UIViewController {
         
         if sender.tag == 0 {
             UserDefaults.standard.set("#d1e6d6", forKey: "backgroundColour")
-//            Theme.updateDisplay()
+
         }
         else if sender.tag == 1 {
             UserDefaults.standard.set("#d8f2ae", forKey: "backgroundColour")
-//            Theme.updateDisplay()
+
         }
         else if sender.tag == 2 {
             UserDefaults.standard.set("#c5ff66", forKey: "backgroundColour")
-//            Theme.updateDisplay()
+
         }
         else if sender.tag == 3 {
             UserDefaults.standard.set("#fffea6", forKey: "backgroundColour")
-//            Theme.updateDisplay()
+
         }
         else if sender.tag == 4 {
             UserDefaults.standard.set("#ffe0a6", forKey: "backgroundColour")
-//            Theme.updateDisplay()
+
         }
         else if sender.tag == 5 {
             UserDefaults.standard.set("#fcb48d", forKey: "backgroundColour")
-//            Theme.updateDisplay()
+
         }
         else if sender.tag == 6 {
             UserDefaults.standard.set("#ffffff", forKey: "backgroundColour")
-//            Theme.updateDisplay()
         }
         else if sender.tag == 7 {
             UserDefaults.standard.set("#8de4fc", forKey: "backgroundColour")
-//            Theme.updateDisplay()
+
         }
         else if sender.tag == 8 {
             UserDefaults.standard.set("#000000", forKey: "backgroundColour")
-//            Theme.updateDisplay()
-            
+
         }
         self.navigationController?.popViewController(animated: true)
     }
