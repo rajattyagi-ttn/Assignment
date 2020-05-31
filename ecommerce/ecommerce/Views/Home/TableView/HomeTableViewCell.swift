@@ -107,13 +107,17 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
 
             cell.outerView.backgroundColor = Theme.color(type: .backgroundColor)
             
-            print(Theme.Fonts.fontColor().description)
-            
+            print(Theme.Fonts.fontColor())
             if Theme.Fonts.fontColor() == UIColor.init(red: 0, green: 0, blue: 0, alpha: 1) {
+                print("Inside Black")
                 cell.innerView.backgroundColor = UIColor.white
+                cell.showNameLabel.textColor = UIColor.black
+                cell.showPopularityLabel.textColor = UIColor.black
+                cell.showGenreLabel.textColor = UIColor.black
                 
             }
             else {
+                print("inside grey cell inner")
                 let color = HexToUIColor.hexStringToUIColor(hex: "1F2124")
                 cell.innerView.backgroundColor = color
                 
@@ -133,6 +137,19 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
 
             cell.outerView.backgroundColor = Theme.color(type: .backgroundColor)
             
+            if Theme.Fonts.fontColor() == UIColor.init(red: 0, green: 0, blue: 0, alpha: 1) {
+                print("inside grey cell inner")
+                cell.innerView.backgroundColor = UIColor.white
+                
+            }
+            else {
+                print("inside grey cell inner")
+                let color = HexToUIColor.hexStringToUIColor(hex: "1F2124")
+                cell.innerView.backgroundColor = color
+                
+            }
+            
+
             return cell
         }
     }

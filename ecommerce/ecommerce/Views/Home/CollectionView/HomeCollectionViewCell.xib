@@ -97,6 +97,7 @@
             <connections>
                 <outlet property="innerView" destination="UEy-Tu-aes" id="k8P-bu-OJ5"/>
                 <outlet property="outerView" destination="SEV-w1-hQF" id="9wx-f9-A67"/>
+                <outlet property="showGenreLabel" destination="WYe-7D-t4G" id="h33-4t-yNa"/>
                 <outlet property="showNameLabel" destination="lnQ-Ic-FRv" id="OSX-9d-G0X"/>
                 <outlet property="showPopularityLabel" destination="ecj-mM-bOf" id="2k3-nA-HvI"/>
                 <outlet property="showPosterImageView" destination="vxW-IE-vok" id="7jc-r3-w6n"/>

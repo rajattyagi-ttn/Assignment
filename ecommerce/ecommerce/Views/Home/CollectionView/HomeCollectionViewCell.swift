@@ -15,6 +15,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var showPosterImageView: UIImageView!
     @IBOutlet weak var showNameLabel: UILabel!
     @IBOutlet weak var showPopularityLabel: UILabel!
+    @IBOutlet weak var showGenreLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

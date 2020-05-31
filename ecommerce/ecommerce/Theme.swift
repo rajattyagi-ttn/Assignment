@@ -43,7 +43,7 @@ class Theme {
         }
         static func fontColor () -> UIColor {
 
-            guard let hexStringFontColor: String = UserDefaults.standard.object(forKey: "fontColor") as? String else { return UIColor(red: 0, green: 0, blue: 0, alpha: 1) }
+            guard let hexStringFontColor: String = UserDefaults.standard.object(forKey: "fontColor") as? String else { return UIColor(red: 255, green: 255, blue: 255, alpha: 1) }
              let fontColor: UIColor = HexToUIColor.hexStringToUIColor(hex: hexStringFontColor)
             return fontColor
         }
@@ -51,16 +51,7 @@ class Theme {
     }
     
     static public func updateDisplay() {
-//        let proxyButton = UIButton.appearance()
-//        proxyButton.backgroundColor = Theme.color(type: .brandColor)
-//        proxyButton.titleLabel?.font = Theme.Fonts.font()
-////        proxyButton.tintColor = Theme.Fonts.fontColor()
-//        proxyButton.titleLabel?.backgroundColor = Theme.color(type: .brandColor)
-//
-//
-//        let proxyView = UIView.appearance()
-//
-//        proxyView.backgroundColor = Theme.color(type: .backgroundColor)
+
 
         
         let proxyLabel = UILabel.appearance()

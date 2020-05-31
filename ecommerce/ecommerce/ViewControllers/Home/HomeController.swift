@@ -17,6 +17,8 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(Theme.Fonts.fontColor())
+        
         let nib = UINib.init(nibName: "HomeTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "showsTVCell")
         

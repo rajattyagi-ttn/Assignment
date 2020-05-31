@@ -38,7 +38,12 @@ class SignUpController: UIViewController {
     }
     
     func setupTheme() {
-        view.backgroundColor = Theme.color(type: .backgroundColor)
+        if UserDefaults.standard.object(forKey: "backgroundColour") == nil {
+            view.backgroundColor = UIColor.black
+        }
+        else{
+            view.backgroundColor = Theme.color(type: .backgroundColor)
+        }
     }
     
 

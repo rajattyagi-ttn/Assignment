@@ -64,7 +64,13 @@ class SignInController: UIViewController{
     }
     
     func setupTheme() {
-        view.backgroundColor = Theme.color(type: .backgroundColor)
+        if UserDefaults.standard.object(forKey: "backgroundColour") == nil {
+            view.backgroundColor = UIColor.black
+        }
+        else{
+            view.backgroundColor = Theme.color(type: .backgroundColor)
+        }
+        
     }
     
     //MARK:- FB FIREBASE AUTHENTICATION/Users/rajat/Desktop/Assignment/ecommerce/ecommerce/ecommerceTests

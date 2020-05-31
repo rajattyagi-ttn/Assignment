@@ -29,7 +29,7 @@ class ThemeSelectionController: UIViewController {
         }
         
         if UserDefaults.standard.object(forKey: "fontColor") == nil {
-            UserDefaults.standard.set("#000000", forKey: "fontColor")
+            UserDefaults.standard.set("#ffffff", forKey: "fontColor")
         }
     }
     
