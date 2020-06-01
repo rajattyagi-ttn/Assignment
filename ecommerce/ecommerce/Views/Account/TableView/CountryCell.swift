@@ -15,6 +15,8 @@ class CountryCell: UITableViewCell {
     @IBOutlet weak var countryFlagImageView: UIImageView!
     @IBOutlet weak var countryNameLabel: UILabel!
     
+    let defaultCountryCode = "in"
+    let defaultCountryFlagImage = #imageLiteral(resourceName: "globe")
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +31,27 @@ class CountryCell: UITableViewCell {
     
     func setCountryFlagImageView(image: UIImage) {
         countryFlagImageView.image = image
+    }
+    
+    func setupCell(indexPath: IndexPath) {
+        self.cellIconImageView.image = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowIcon
+        self.cellTitleLabel.text = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowName
+        self.countryNameLabel.text = defaultCountryCode.uppercased()
+        
+        if let url = URL(string: "https://www.countryflags.io/\(defaultCountryCode)/shiny/64.png") {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        
+                        self.setCountryFlagImageView(image: UIImage(data: data) ?? self.defaultCountryFlagImage)
+                        self.countryFlagImageView.contentMode = .scaleAspectFill
+
+                    }
+                }
+            }.resume()
+            
+        }
+        
     }
     
 }

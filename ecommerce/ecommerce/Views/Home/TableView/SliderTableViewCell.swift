@@ -26,8 +26,6 @@ class SliderTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        sliderCollectionView.backgroundColor = Theme.color(type: .backgroundColor)
-        
         sliderCollectionView.delegate = self
         sliderCollectionView.dataSource = self
             

@@ -25,4 +25,10 @@ class EmployeeListTableViewCell: UITableViewCell {
 
     }
     
+    func setupCell(_ employeeInfo: EmployeeResultModel) {
+        self.employeeIDLabel.text = "ID : \(employeeInfo.id)"
+
+        self.employeeNameLabel.text = "Name : \(employeeInfo.employeeName)"
+    }
+    
 }

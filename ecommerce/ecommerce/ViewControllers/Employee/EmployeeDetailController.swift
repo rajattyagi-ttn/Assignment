@@ -13,7 +13,7 @@ class EmployeeDetailController: UIViewController {
 
     @IBOutlet weak var detailTableView: UITableView!
     
-    var employeeImages = [#imageLiteral(resourceName: "employee1"),#imageLiteral(resourceName: "employee4"),#imageLiteral(resourceName: "employee3"),#imageLiteral(resourceName: "employee2")]
+   
     
     var employeeArray = [EmployeeResultModel]()
     
@@ -64,11 +64,8 @@ extension EmployeeDetailController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = detailTableView.dequeueReusableCell(withIdentifier: "employeeDetailTVCell", for: indexPath) as! EmployeeDetailTableViewCell
         
-        cell.employeeImageView.image = employeeImages[indexPath.row % 4]
-        
-        cell.employeeNameLabel.text = "\(employeeArray[indexPath.row].employeeName)  •  \(employeeArray[indexPath.row].employeeAge)"
-        
-        cell.employeeDetailsLabel.text = "ID : \(employeeArray[indexPath.row].id)  Salary : ₹ \(employeeArray[indexPath.row].employeeSalary) "
+        let employee = employeeArray[indexPath.row]
+        cell.setupCell(employee)
         
         cell.backgroundColor = Theme.color(type: .backgroundColor)
         return cell

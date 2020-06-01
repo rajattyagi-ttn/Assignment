@@ -17,20 +17,6 @@ class ThemeSelectionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        if UserDefaults.standard.object(forKey: "brandColour") == nil {
-//            UserDefaults.standard.set("#32a852", forKey: "brandColour")
-//        }
-//        if UserDefaults.standard.object(forKey: "backgroundColour") == nil {
-//            UserDefaults.standard.set("#ffffff", forKey: "backgroundColour")
-//        }
-//
-//        if UserDefaults.standard.object(forKey: "font") == nil {
-//            UserDefaults.standard.set("Verdana-Bold", forKey: "font")
-//        }
-//
-//        if UserDefaults.standard.object(forKey: "fontColor") == nil {
-//            UserDefaults.standard.set("#ffffff", forKey: "fontColor")
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

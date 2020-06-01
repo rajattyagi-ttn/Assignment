@@ -73,7 +73,7 @@ class AccountController: UIViewController, UINavigationControllerDelegate, UIIma
         super.viewDidAppear(animated)
         
         
-        
+        //MARK:- Hiding and showing logout button
         if Auth.auth().currentUser == nil
         {
             jointStackView.isHidden = false
@@ -204,24 +204,7 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 1 && indexPath.row == countryIndex {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "countrycell", for: indexPath) as! CountryCell
-            cell.cellIconImageView.image = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowIcon
-            cell.cellTitleLabel.text = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowName
-            cell.countryNameLabel.text = defaultCountryCode.uppercased()
-            
-            if let url = URL(string: "https://www.countryflags.io/\(defaultCountryCode)/shiny/64.png") {
-                URLSession.shared.dataTask(with: url) { (data, response, error) in
-                    if let data = data {
-                        DispatchQueue.main.async {
-                            
-                            cell.setCountryFlagImageView(image: UIImage(data: data) ?? self.defaultCountryFlagImage)
-                            cell.countryFlagImageView.contentMode = .scaleAspectFill
-
-                        }
-                    }
-                }.resume()
-                
-            }
-            
+            cell.setupCell(indexPath: indexPath)
             cell.backgroundColor = Theme.color(type: .backgroundColor)
             return cell
         }
@@ -229,9 +212,7 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
         else if indexPath.section == 1 && indexPath.row == languageIndex {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "languagecell", for: indexPath) as! LanguageCell
-            cell.cellIconImageView.image = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowIcon
-            cell.cellTitleLabel.text = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowName
-            cell.languageNameLabel.text = String(defaultLanguageName.prefix(3))
+            cell.setupCell(indexPath: indexPath)
             cell.backgroundColor = Theme.color(type: .backgroundColor)
             return cell
             
@@ -240,15 +221,10 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
         else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "accountcell", for: indexPath) as! AccountCell
-            cell.menuItemImageView.image = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowIcon
-            cell.menuItemLabel.text = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowName
-            cell.additionalLabel.isHidden = true
+            cell.setupCell(indexPath: indexPath)
             cell.backgroundColor = Theme.color(type: .backgroundColor)
             return cell
         }
-        
-        
-
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -341,7 +317,6 @@ extension AccountController : UITableViewDelegate, UITableViewDataSource {
             alert.dismiss(animated: true)
         }
     }
-    
     
 }
 

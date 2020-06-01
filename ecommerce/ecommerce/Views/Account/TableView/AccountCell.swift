@@ -26,5 +26,11 @@ class AccountCell: UITableViewCell {
  
     }
     
+    func setupCell(indexPath: IndexPath) {
+        self.menuItemImageView.image = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowIcon
+        self.menuItemLabel.text = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowName
+        self.additionalLabel.isHidden = true
+    }
+    
 }
 

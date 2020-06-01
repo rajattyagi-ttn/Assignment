@@ -7,80 +7,29 @@
 //
 
 import UIKit
+import SwiftHSVColorPicker
 
 class BrandColorController: UIViewController {
 
-     @IBOutlet weak var button1: UIButton!
-        @IBOutlet weak var button2: UIButton!
-        @IBOutlet weak var button3: UIButton!
-        @IBOutlet weak var button4: UIButton!
-        @IBOutlet weak var button5: UIButton!
-        @IBOutlet weak var button6: UIButton!
-        @IBOutlet weak var button7: UIButton!
-        @IBOutlet weak var button8: UIButton!
-        @IBOutlet weak var button9: UIButton!
+  
+    
+    @IBOutlet weak var colorPickerView: UIView!
+    
+    let colorPicker = SwiftHSVColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            colorPickerView.addSubview(colorPicker)
+            colorPicker.setViewColor(UIColor.red)
 
         }
         
-        override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(true)
-            
-            button1.backgroundColor = HexToUIColor.hexStringToUIColor(hex: "d1e6d6")
-            button2.backgroundColor = HexToUIColor.hexStringToUIColor(hex: "d8f2ae")
-            button3.backgroundColor = HexToUIColor.hexStringToUIColor(hex: "c5ff66")
-            button4.backgroundColor = HexToUIColor.hexStringToUIColor(hex: "fffea6")
-            button5.backgroundColor = HexToUIColor.hexStringToUIColor(hex: "ffe0a6")
-            button6.backgroundColor = HexToUIColor.hexStringToUIColor(hex: "fcb48d")
-            button7.backgroundColor = HexToUIColor.hexStringToUIColor(hex: "ffffff")
-            button8.backgroundColor = HexToUIColor.hexStringToUIColor(hex: "8de4fc")
-            button9.backgroundColor = HexToUIColor.hexStringToUIColor(hex: "000000")
-            
-            view.backgroundColor = UIColor.gray
-        }
-        
-
-        @IBAction func brandColorButtonTapped(_ sender: UIButton) {
-            
-            if sender.tag == 0 {
-                UserDefaults.standard.set("#d1e6d6", forKey: "brandColour")
-
-            }
-            else if sender.tag == 1 {
-                UserDefaults.standard.set("#d8f2ae", forKey: "brandColour")
-
-            }
-            else if sender.tag == 2 {
-                UserDefaults.standard.set("#c5ff66", forKey: "brandColour")
-
-            }
-            else if sender.tag == 3 {
-                UserDefaults.standard.set("#fffea6", forKey: "brandColour")
-            }
-            else if sender.tag == 4 {
-                UserDefaults.standard.set("#ffe0a6", forKey: "brandColour")
-
-            }
-            else if sender.tag == 5 {
-                UserDefaults.standard.set("#fcb48d", forKey: "brandColour")
-  
-            }
-            else if sender.tag == 6 {
-                UserDefaults.standard.set("#ffffff", forKey: "brandColour")
-    
-            }
-            else if sender.tag == 7 {
-                UserDefaults.standard.set("#8de4fc", forKey: "brandColour")
-            }
-            else if sender.tag == 8 {
-                UserDefaults.standard.set("#000000", forKey: "brandColour")
-    
-                
-            }
+        @IBAction func confirmTapped(_ sender: UIButton) {
+            UserDefaults.standard.set(ColorToHex.hexStringFromColor(color: colorPicker.color), forKey: "brandColour")
             self.navigationController?.popViewController(animated: true)
         }
+        
+
         
 
 }

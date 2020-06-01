@@ -129,7 +129,7 @@ class SignInController: UIViewController{
     //MARK:- Poping After Successful Signin into google
     func googleDidSignIn() {
         
-        print("Poping")
+        
         self.navigationController?.popViewController(animated: true)
 
     }
@@ -137,12 +137,9 @@ class SignInController: UIViewController{
     
     @objc func forgetPasswordAction() {
         
-        print("forgetPasswordLabelTap")
-        
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PasswordResetController")
         self.navigationController?.pushViewController(vc, animated: true)
-               
     }
    
     
@@ -201,10 +198,8 @@ extension SignInController: GIDSignInDelegate {
             self.googleDidSignIn()
  
         }
-        
     }
  
-    
 }
 
 extension SignInController: UITextFieldDelegate {

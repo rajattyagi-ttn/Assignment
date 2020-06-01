@@ -79,31 +79,9 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         if showCategories.count > 3 && showCategories[0].count>0 && showCategories[1].count>0 && showCategories[2].count>0 && showCategories[3].count>0 {
             
             let show = showCategories[collectionView.tag][indexPath.row]
-            if show.name != nil {
-                cell.showNameLabel.text = show.name?.uppercased()
-            }
-            else{
-                cell.showNameLabel.text = show.title?.uppercased()
-            }
-            cell.showPopularityLabel.text = show.voteAverage?.description
-
-            //MARK:- check for  poster path
-            if show.posterPath == nil {
-                cell.showPosterImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
-            }
-            
-            else {
-                AF.request(baseImageUrl + (show.posterPath!)).responseImage { response in
-
-                    if case .success(let image) = response.result {
-                        cell.showPosterImageView.image = image
-                        cell.showPosterImageView.contentMode = .scaleAspectFill
-                    }
-                }
-            }
+            cell.setupCell(show)
             // Applying Theme on CollectionViewCell
             
-           
             if Theme.Fonts.fontColor() == UIColor.init(red: 0, green: 0, blue: 0, alpha: 1) {
                
                 cell.innerView.backgroundColor = UIColor.white

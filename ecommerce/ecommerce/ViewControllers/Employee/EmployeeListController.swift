@@ -62,10 +62,8 @@ extension EmployeeListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = listTableView.dequeueReusableCell(withIdentifier: "employeeListTVCell", for: indexPath) as! EmployeeListTableViewCell
-            
-        cell.employeeIDLabel.text = "ID : \(employeeArray[indexPath.row].id)"
-
-        cell.employeeNameLabel.text = "Name : \(employeeArray[indexPath.row].employeeName)"
+        let employee = employeeArray[indexPath.row]
+        cell.setupCell(employee)
         
         cell.backgroundColor = Theme.color(type: .backgroundColor)
         return cell

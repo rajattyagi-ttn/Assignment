@@ -30,14 +30,8 @@ class PasswordResetController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resetChoiceLabel.isHidden = false
-        byEmailButton.isHidden = false
-        bySecurityQuestionButton.isHidden = false
-        emailTextField.isHidden = false
-        securityQuestionLabel.isHidden = true
-        securityAnswerTextField.isHidden = true
-        submitButton.isHidden = true
-        newPasswordTextfield.isHidden = true
+        
+        setupView()
         
         emailTextField.delegate = self
         securityAnswerTextField.delegate = self
@@ -49,6 +43,17 @@ class PasswordResetController: UIViewController {
         
         setupTheme()
         
+    }
+    
+    func setupView() {
+        resetChoiceLabel.isHidden = false
+        byEmailButton.isHidden = false
+        bySecurityQuestionButton.isHidden = false
+        emailTextField.isHidden = false
+        securityQuestionLabel.isHidden = true
+        securityAnswerTextField.isHidden = true
+        submitButton.isHidden = true
+        newPasswordTextfield.isHidden = true
     }
     
     func setupTheme() {
@@ -69,7 +74,7 @@ class PasswordResetController: UIViewController {
     }
     
     @IBAction func BySecurityQuestionTapped(_ sender: UIButton) {
-        
+        //If user didn't enter email show alert
         if emailTextField.text?.isEmpty == true {
             let alertController = UIAlertController(title: "Error", message: "Please Enter Email First", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -77,14 +82,11 @@ class PasswordResetController: UIViewController {
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        else{
+            
+        else {
+            
             resetChoiceLabel.isHidden = false
-            
-            
-            
-            
             self.byEmail = false
-            
             let email = emailTextField.text
             let oldPass = UserDefaults.standard.string(forKey: "\(email)userPassword") ?? ""
             
@@ -120,10 +122,7 @@ class PasswordResetController: UIViewController {
                 }
             }
         }
-        
-        
-        
-        
+ 
     }
     
     @IBAction func submitTapped(_ sender: UIButton) {

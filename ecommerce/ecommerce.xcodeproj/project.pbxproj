@@ -243,9 +243,9 @@
 				0410664F2480BF640051716C /* SignUpController.swift */,
 				0439EA23247D532A00C6A04A /* MapViewController.swift */,
 				04A551BC242CAD3F00E848E2 /* ChoiceListController.swift */,
-				04B16D0A2483C6F9007795FB /* BrandColorController.swift */,
 				041066752483682B0051716C /* ThemeSelectionController.swift */,
 				0410667724836D400051716C /* BackgroundColorController.swift */,
+				04B16D0A2483C6F9007795FB /* BrandColorController.swift */,
 				04B16D0C2483CB76007795FB /* FontStyleController.swift */,
 				04B16D0E2483CB8C007795FB /* FontColorController.swift */,
 			);

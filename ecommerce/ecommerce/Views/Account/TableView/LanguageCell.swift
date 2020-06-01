@@ -13,6 +13,9 @@ class LanguageCell: UITableViewCell {
     @IBOutlet weak var cellIconImageView: UIImageView!
     @IBOutlet weak var cellTitleLabel: UILabel!
     @IBOutlet weak var languageNameLabel: UILabel!
+    
+    let defaultLanguageName = "HINDI"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,4 +27,10 @@ class LanguageCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    func setupCell(indexPath: IndexPath) {
+        self.cellIconImageView.image = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowIcon
+        self.cellTitleLabel.text = AccountMenu.accountMenuItems[indexPath.section][indexPath.row].rowName
+        self.languageNameLabel.text = String(defaultLanguageName.prefix(3))
+    }
 }
